@@ -1,0 +1,22 @@
+# <type>[optional scope]: <subject> 
+#
+# [message body]
+#
+# <footer>
+
+# ==== <type> with Emoji ====
+# ✨feat    :sparkles:システムへの機能作成・改善
+# 🔧conf    :wrench:設定ファイルの作成・改善
+# ✅test    :white_check_mark:テストコードの作成・改善 
+# 🐳pod     :whale:Docker・Kubernetes関連の作成・改善
+# 💚cicd    :green_heart:CICDの追加・修正・改善
+# 🐛fix     :bug:バグ修正
+# 📝doc     :memo:ドキュメントの作成・追加・修正
+# 🚧wip     :construction:色々なものが途中
+
+# ==== Example ====
+#✨feat(login-page): ログインページの追加
+#
+#- ユーザーアカウントに関連付けられている環境設定は、テーマ、TimeZone e.t.cなどのデフォルトのアプリの設定をオーバーライドおよびカスタマイズできます。
+#
+#Fixes #065
