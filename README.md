@@ -1,1 +1,1 @@
-# pjt_app
+# portfolios-app
