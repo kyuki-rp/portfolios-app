@@ -1,7 +1,7 @@
 
 variable "app_name" {}
 
-provider aws {
+provider "aws" {
   region = "ap-northeast-1"
 }
 
@@ -13,7 +13,7 @@ resource "aws_vpc" "default" {
     cidr_block = "10.0.0.0/16"
     enable_dns_support = "true"
     enable_dns_hostnames = "true"
-    tags = {"Name" = "{var.app_name}_push_ecr"}
+    tags = {"Name" = "${var.app_name}_push_ecr"}
 }
 
 resource "aws_subnet" "default" {
@@ -21,17 +21,17 @@ resource "aws_subnet" "default" {
   availability_zone = "ap-northeast-1a"
   cidr_block = "10.0.0.0/24"
   map_public_ip_on_launch = "true"
-  tags = {Name = "{var.app_name}_push_ecr"}
+  tags = {Name = "${var.app_name}_push_ecr"}
 }
 
 resource "aws_internet_gateway" "default" {
   vpc_id = aws_vpc.default.id
-  tags = {Name = "{var.app_name}_push_ecr"}
+  tags = {Name = "${var.app_name}_push_ecr"}
 }
 
 resource "aws_route_table" "default" {
     vpc_id = aws_vpc.default.id
-    tags = {Name = "{var.app_name}_push_ecr"}
+    tags = {Name = "${var.app_name}_push_ecr"}
 }
 
 resource "aws_route" "default" {
@@ -47,7 +47,7 @@ resource "aws_route_table_association" "default" {
 }
 
 resource "aws_security_group" "default" {
-  name        = "{var.app_name}_push_ecr"
+  name        = "${var.app_name}_push_ecr"
   description = "Used in the terraform"
   vpc_id      = aws_vpc.default.id
 
@@ -88,7 +88,7 @@ data "aws_iam_policy_document" "default" {
 }
 
 resource "aws_iam_role" "default" {
-  name               = "{var.app_name}_push_ecr"
+  name               = "${var.app_name}_push_ecr"
   assume_role_policy = data.aws_iam_policy_document.default.json
 }
 
@@ -98,7 +98,7 @@ resource "aws_iam_role_policy_attachment" "default" {
 }
 
 resource "aws_iam_instance_profile" "default" {
-  name = "{var.app_name}_push_ecr"
+  name = "${var.app_name}_push_ecr"
   role = aws_iam_role.default.name
 }
 
@@ -106,7 +106,7 @@ resource "aws_instance" "default" {
     ami = data.aws_ssm_parameter.amzn2_ami.value
     instance_type = "t2.micro"
     user_data = file("userdata.sh")
-    tags = {"Name" = "{var.app_name}_push_ecr"}
+    tags = {"Name" = "${var.app_name}_push_ecr"}
     vpc_security_group_ids = [aws_security_group.default.id]
     subnet_id = aws_subnet.default.id
     associate_public_ip_address = "true"
