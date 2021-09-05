@@ -1,0 +1,37 @@
+[
+    {
+      "name": "wordpress",
+      "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/wordpress:latest",
+      "networkMode": "awsvpc",
+      "cpu": 216,
+      "memory": 512,
+      "essential": true
+    },
+    {
+      "name": "mysql",
+      "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:5.7",
+      "networkMode": "awsvpc",
+      "cpu": 216,
+      "memory": 512,
+      "essential": true,
+    
+      "environment": [
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "value": "root_pass"
+        },
+        {
+          "name": "MYSQL_DATABASE",
+          "value": "wordpress"
+        },
+        {
+          "name": "MYSQL_USER",
+          "value": "wordpress"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "value": "wordpress"
+        }
+      ]
+    }
+  ]
