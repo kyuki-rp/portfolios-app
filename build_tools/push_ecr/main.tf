@@ -1,52 +1,55 @@
+
+variable "app_name" {}
+
 provider aws {
   region = "ap-northeast-1"
 }
 
-data aws_ssm_parameter amzn2_ami {
+data "aws_ssm_parameter" "amzn2_ami" {
   name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
-resource "aws_vpc" "push_ecr" {
+resource "aws_vpc" "default" {
     cidr_block = "10.0.0.0/16"
     enable_dns_support = "true"
     enable_dns_hostnames = "true"
-    tags = {"Name" = "push_ecr"}
+    tags = {"Name" = "{var.app_name}_push_ecr"}
 }
 
-resource "aws_subnet" "push_ecr" {
-  vpc_id = aws_vpc.push_ecr.id
+resource "aws_subnet" "default" {
+  vpc_id = aws_vpc.default.id
   availability_zone = "ap-northeast-1a"
   cidr_block = "10.0.0.0/24"
   map_public_ip_on_launch = "true"
-  tags = {Name = "push_ecr"}
+  tags = {Name = "{var.app_name}_push_ecr"}
 }
 
-resource "aws_internet_gateway" "push_ecr" {
-  vpc_id = aws_vpc.push_ecr.id
-  tags = {Name = "push_ecr"}
+resource "aws_internet_gateway" "default" {
+  vpc_id = aws_vpc.default.id
+  tags = {Name = "{var.app_name}_push_ecr"}
 }
 
-resource "aws_route_table" "push_ecr" {
-    vpc_id = aws_vpc.push_ecr.id
-    tags = {Name = "push_ecr"}
+resource "aws_route_table" "default" {
+    vpc_id = aws_vpc.default.id
+    tags = {Name = "{var.app_name}_push_ecr"}
 }
 
-resource "aws_route" "push_ecr" {
-  route_table_id = aws_route_table.push_ecr.id
+resource "aws_route" "default" {
+  route_table_id = aws_route_table.default.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id = aws_internet_gateway.push_ecr.id
-  depends_on = [aws_route_table.push_ecr]
+  gateway_id = aws_internet_gateway.default.id
+  depends_on = [aws_route_table.default]
 }
 
-resource "aws_route_table_association" "push_ecr" {
-    subnet_id = aws_subnet.push_ecr.id
-    route_table_id = aws_route_table.push_ecr.id
+resource "aws_route_table_association" "default" {
+    subnet_id = aws_subnet.default.id
+    route_table_id = aws_route_table.default.id
 }
 
-resource "aws_security_group" "push_ecr" {
-  name        = "push_ecr"
+resource "aws_security_group" "default" {
+  name        = "{var.app_name}_push_ecr"
   description = "Used in the terraform"
-  vpc_id      = aws_vpc.push_ecr.id
+  vpc_id      = aws_vpc.default.id
 
   # SSH access from anywhere
   ingress {
@@ -63,7 +66,7 @@ resource "aws_security_group" "push_ecr" {
   }
 }
 
-resource "aws_security_group_rule" "inbound_http" {
+resource "aws_security_group_rule" "default" {
   type        = "ingress"
   from_port   = 80
   to_port     = 80
@@ -71,10 +74,10 @@ resource "aws_security_group_rule" "inbound_http" {
   cidr_blocks = ["0.0.0.0/0"]
 
   # ここでweb_serverセキュリティグループに紐付け
-  security_group_id = aws_security_group.push_ecr.id
+  security_group_id = aws_security_group.default.id
 }
 
-data "aws_iam_policy_document" "push_ecr" {
+data "aws_iam_policy_document" "default" {
   statement {
     actions = ["sts:AssumeRole"]
     principals {
@@ -84,38 +87,28 @@ data "aws_iam_policy_document" "push_ecr" {
   }
 }
 
-resource "aws_iam_role" "push_ecr" {
-  name               = "push_ecr"
-  assume_role_policy = data.aws_iam_policy_document.push_ecr.json
+resource "aws_iam_role" "default" {
+  name               = "{var.app_name}_push_ecr"
+  assume_role_policy = data.aws_iam_policy_document.default.json
 }
 
-resource "aws_iam_role_policy_attachment" "push_ecr" {
-  role       = aws_iam_role.push_ecr.name
+resource "aws_iam_role_policy_attachment" "default" {
+  role       = aws_iam_role.default.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"
 }
 
-resource "aws_iam_instance_profile" "push_ecr" {
-  name = "push_ecr"
-  role = aws_iam_role.push_ecr.name
+resource "aws_iam_instance_profile" "default" {
+  name = "{var.app_name}_push_ecr"
+  role = aws_iam_role.default.name
 }
 
-resource "aws_ecr_repository" "wordpress" {
-  name = "wordpress"
-}
-
-resource "aws_ecr_repository" "mysql" {
-  name = "mysql"
-}
-
-
-resource "aws_instance" "myAmazonLinux2" {
+resource "aws_instance" "default" {
     ami = data.aws_ssm_parameter.amzn2_ami.value
     instance_type = "t2.micro"
     user_data = file("userdata.sh")
-    tags = {"Name" = "push_ecr"}
-    key_name = "test"
-    vpc_security_group_ids = [aws_security_group.push_ecr.id]
-    subnet_id = aws_subnet.push_ecr.id
+    tags = {"Name" = "{var.app_name}_push_ecr"}
+    vpc_security_group_ids = [aws_security_group.default.id]
+    subnet_id = aws_subnet.default.id
     associate_public_ip_address = "true"
-    iam_instance_profile = aws_iam_instance_profile.push_ecr.name
+    iam_instance_profile = aws_iam_instance_profile.default.name
 }
