@@ -10,16 +10,16 @@
     ```
     cd $HOME/portfolios-app/build_tools/push_ecr
     terraform init
-    terraform plan
-    terraform apply --auto-approve
+    terraform plan -var 'app_name=poto'
+    terraform apply -var 'app_name=poto' --auto-approve
     ```
 
 1. ecsにbuild
     ```
     cd $HOME/portfolios-app/build_tools/build_ecs
     terraform init
-    terraform plan
-    terraform apply --auto-approve
+    terraform plan -var 'app_name=poto' -var 'app_name=poto'
+    terraform apply  -var 'app_name=poto' --auto-approve
     ```
 
 1. 
