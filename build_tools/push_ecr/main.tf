@@ -1,5 +1,6 @@
 
 variable "app_name" {}
+variable "aws_account_id" {}
 
 provider "aws" {
   region = "ap-northeast-1"
@@ -113,7 +114,7 @@ resource "aws_ecr_repository" "mysql" {
 resource "aws_instance" "default" {
     ami = data.aws_ssm_parameter.amzn2_ami.value
     instance_type = "t2.micro"
-    user_data = file("userdata.sh")
+    user_data = templatefile("userdata.sh", {aws_account_id=var.aws_account_id, region_name="ap-northeast-1"})
     key_name = "test"
     tags = {"Name" = "${var.app_name}_push_ecr"}
     vpc_security_group_ids = [aws_security_group.default.id]
