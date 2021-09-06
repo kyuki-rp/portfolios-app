@@ -15,6 +15,12 @@ resource "aws_subnet" "default" {
   tags = {Name = var.app_name}
 }
 
+module "igw" {
+  source      = "./igw"
+  name        = "${var.app_name}"
+  vpc_id      = aws_vpc.default.id
+}
+
 resource "aws_security_group" "default" {
   name        = var.app_name
   vpc_id      = aws_vpc.default.id
