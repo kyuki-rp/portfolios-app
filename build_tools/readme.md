@@ -18,8 +18,8 @@
     ```
     cd $HOME/portfolios-app/build_tools/build_ecs
     terraform init
-    terraform plan -var 'app_name=poto' -var 'app_name=poto'
-    terraform apply  -var 'app_name=poto' --auto-approve
+    terraform plan -var 'app_name=poto' -var 'aws_account_id=695753757570'
+    terraform apply  -var 'app_name=poto' -var 'aws_account_id=695753757570' --auto-approve
     ```
 
 1. 

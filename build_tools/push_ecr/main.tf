@@ -102,6 +102,14 @@ resource "aws_iam_instance_profile" "default" {
   role = aws_iam_role.default.name
 }
 
+resource "aws_ecr_repository" "wordpress" {
+  name = "wordpress"
+}
+
+resource "aws_ecr_repository" "mysql" {
+  name = "mysql"
+}
+
 resource "aws_instance" "default" {
     ami = data.aws_ssm_parameter.amzn2_ami.value
     instance_type = "t2.micro"
