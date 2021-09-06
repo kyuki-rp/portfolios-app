@@ -1,5 +1,6 @@
 variable "name" {}
 variable "vpc_id" {}
+variable "subnet_id" {}
 
 resource "aws_internet_gateway" "default" {
   vpc_id = var.vpc_id
@@ -18,6 +19,7 @@ resource "aws_route" "default" {
   depends_on = [aws_route_table.default]
 }
 
-output "id" {
-  value = aws_route_table.default.id
+resource "aws_route_table_association" "defoult" {
+    subnet_id = subnet_id
+    route_table_id = aws_route_table.default.id
 }
