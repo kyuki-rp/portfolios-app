@@ -23,7 +23,7 @@ module "igw" {
 }
 
 module "sg" {
-  source      = "../security_group"
+  source      = "../sg"
   name        = var.app_name
   vpc_id      = aws_vpc.default.id
   cidr_blocks = [aws_vpc.default.cidr_block]
