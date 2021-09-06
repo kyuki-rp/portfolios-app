@@ -33,6 +33,6 @@ output "aws_subnet" {
     value = aws_subnet.default
 }
 
-output "aws_security_group" {
-    value = module.sg.aws_security_group
+output "aws_security_group_id" {
+    value = module.sg.id
 }

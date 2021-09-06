@@ -35,7 +35,7 @@ resource "aws_ecs_service" "default" {
   network_configuration {
     assign_public_ip = "true"
     subnets = [module.network.aws_subnet.id]
-    security_groups = [module.network.aws_security_group.id]
+    security_groups = [module.network.aws_security_group_id]
   }
  
   task_definition = aws_ecs_task_definition.default.arn

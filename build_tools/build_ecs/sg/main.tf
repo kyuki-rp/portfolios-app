@@ -34,6 +34,6 @@ resource "aws_security_group_rule" "egress" {
   security_group_id = aws_security_group.default.id
 }
 
-output "aws_security_group" {
-  value = aws_security_group.default
+output "id" {
+  value = aws_security_group.default.id
 }
