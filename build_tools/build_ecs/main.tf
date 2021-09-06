@@ -39,4 +39,6 @@ resource "aws_ecs_service" "default" {
   }
  
   task_definition = aws_ecs_task_definition.default.arn
+
+  enable_execute_command = "true"
 }
