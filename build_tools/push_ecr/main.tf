@@ -114,6 +114,7 @@ resource "aws_instance" "default" {
     ami = data.aws_ssm_parameter.amzn2_ami.value
     instance_type = "t2.micro"
     user_data = file("userdata.sh")
+    key_name = "test"
     tags = {"Name" = "${var.app_name}_push_ecr"}
     vpc_security_group_ids = [aws_security_group.default.id]
     subnet_id = aws_subnet.default.id
