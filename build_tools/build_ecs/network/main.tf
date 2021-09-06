@@ -22,23 +22,11 @@ module "igw" {
   subnet_id   = aws_subnet.default.id
 }
 
-resource "aws_security_group" "default" {
+module "sg" {
+  source      = "../security_group"
   name        = var.app_name
   vpc_id      = aws_vpc.default.id
-
-  # SSH access from anywhere
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    cidr_blocks     = ["0.0.0.0/0"]
-  }
+  cidr_blocks = [aws_vpc.default.cidr_block]
 }
 
 output "aws_subnet" {
@@ -46,5 +34,5 @@ output "aws_subnet" {
 }
 
 output "aws_security_group" {
-    value = aws_security_group.default
+    value = module.sg.aws_security_group
 }
