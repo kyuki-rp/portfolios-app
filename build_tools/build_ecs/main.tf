@@ -33,6 +33,7 @@ resource "aws_ecs_service" "default" {
   name                               = var.app_name
  
   network_configuration {
+    assign_public_ip = "true"
     subnets = [module.network.aws_subnet.id]
     security_groups = [module.network.aws_security_group.id]
   }
