@@ -20,6 +20,6 @@ resource "aws_route" "default" {
 }
 
 resource "aws_route_table_association" "defoult" {
-    subnet_id = subnet_id
+    subnet_id = var.subnet_id
     route_table_id = aws_route_table.default.id
 }
