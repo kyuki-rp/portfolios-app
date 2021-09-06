@@ -12,7 +12,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo yum install git-all -y
 
 # git clone
-git clone https://github.com/kyuki-rp/cloudtools.git /home/ec2-user/cloudtools
+git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtools
 
 # parameter
 REGION_NAME=ap-northeast-1
