@@ -2,7 +2,6 @@
     {
       "name": "wordpress",
       "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/wordpress:latest",
-      "networkMode": "awsvpc",
       "memoryReservation": 256,
       "essential": true,
 
@@ -21,7 +20,6 @@
     {
       "name": "mysql",
       "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:5.7",
-      "networkMode": "awsvpc",
       "memoryReservation": 256,
       "essential": true,
 
