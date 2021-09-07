@@ -11,9 +11,7 @@
           "protocol": "tcp",
           "containerPort": 80
         }
-      ],
-
-      "hostname": "127.0.0.1"
+      ]
 
     },
     {
