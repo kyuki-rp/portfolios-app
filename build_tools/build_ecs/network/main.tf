@@ -26,7 +26,6 @@ module "sg" {
   source      = "../sg"
   name        = var.app_name
   vpc_id      = aws_vpc.default.id
-  cidr_blocks = [aws_vpc.default.cidr_block]
 }
 
 output "aws_subnet" {

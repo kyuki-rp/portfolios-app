@@ -1,6 +1,5 @@
 variable "name" {}
 variable "vpc_id" {}
-variable "cidr_blocks" {type = list(string)}
 
 resource "aws_security_group" "default" {
   name   = var.name
@@ -21,7 +20,7 @@ resource "aws_security_group_rule" "ingress_http" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks       = var.cidr_blocks
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.default.id
 }
 
