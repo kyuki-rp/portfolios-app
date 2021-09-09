@@ -10,16 +10,17 @@
     ```
     cd $HOME/portfolios-app/build_tools/push_ecr
     terraform init
-    terraform plan -var 'app_name=poto' -var 'aws_account_id=695753757570'
-    terraform apply -var 'app_name=poto' -var 'aws_account_id=695753757570' --auto-approve
+    terraform plan -var-file=vars.tfvars
+    terraform apply -var-file=vars.tfvars --auto-approve
     ```
+    -var 'app_name=poto' -var 'aws_account_id=695753757570'
 
 1. ecsにbuild
     ```
     cd $HOME/portfolios-app/build_tools/build_ecs
     terraform init
-    terraform plan -var 'app_name=poto' -var 'aws_account_id=695753757570'
-    terraform apply  -var 'app_name=poto' -var 'aws_account_id=695753757570' --auto-approve
+    terraform plan -var-file=vars.tfvars
+    terraform apply -var-file=vars.tfvars --auto-approve
     ```
 
 1. 
