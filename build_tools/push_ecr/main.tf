@@ -39,8 +39,8 @@ resource "aws_instance" "default" {
     user_data = templatefile("userdata.sh", {aws_account_id=var.aws_account_id, region_name="ap-northeast-1"})
     key_name = "test"
     tags = {"Name" = "${var.app_name}_push_ecr"}
-    vpc_security_group_ids = [aws_security_group.default.id]
-    subnet_id = aws_subnet.default.id
+    vpc_security_group_ids = [module.network.aws_security_group_id]
+    subnet_id = module.network.aws_subnet_id
     associate_public_ip_address = "true"
     iam_instance_profile = module.iam.aws_iam_instance_profile_name
 }
