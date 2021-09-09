@@ -13,7 +13,6 @@
     terraform plan -var-file=vars.tfvars
     terraform apply -var-file=vars.tfvars --auto-approve
     ```
-    -var 'app_name=poto' -var 'aws_account_id=695753757570'
 
 1. ecsにbuild
     ```
