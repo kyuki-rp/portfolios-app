@@ -13,4 +13,4 @@ touch vars.tfvars
 echo "aws_user_id=$UserId" >> vars.tfvars
 echo "aws_account_id=$Account" >> vars.tfvars
 echo "aws_arn=$Arn" >> vars.tfvars
-echo "app_name=$AppName" >> vars.tfvars
+echo 'app_name="$AppName"' >> vars.tfvars
