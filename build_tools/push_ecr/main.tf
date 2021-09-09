@@ -21,7 +21,7 @@ resource "aws_ecr_repository" "mysql" {
 
 module "iam" {
   source      = "./iam"
-  name        = "{$var.app_name}_push_ecr"
+  name        = "{$var.app_name}PushEcr"
 }
 
 module "network" {

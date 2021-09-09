@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "default" {
 }
 
 resource "aws_iam_role" "default" {
-  name               = "${var.name}"
+  name               = var.name
   assume_role_policy = data.aws_iam_policy_document.default.json
 }
 
@@ -21,7 +21,7 @@ resource "aws_iam_role_policy_attachment" "default" {
 }
 
 resource "aws_iam_instance_profile" "default" {
-  name = "${var.name}"
+  name = var.name
   role = aws_iam_role.default.name
 }
 
