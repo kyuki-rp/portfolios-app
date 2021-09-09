@@ -12,6 +12,7 @@
     terraform init
     terraform plan -var-file=$HOME/vars.tfvars
     terraform apply -var-file=$HOME/vars.tfvars --auto-approve
+    terraform destroy -var-file=$HOME/vars.tfvars --auto-approve
     ```
 
 1. ecsにbuild
@@ -20,6 +21,7 @@
     terraform init
     terraform plan -var-file=$HOME/vars.tfvars
     terraform apply -var-file=$HOME/vars.tfvars --auto-approve
+    terraform destroy -var-file=$HOME/vars.tfvars --auto-approve
     ```
 
 1. 

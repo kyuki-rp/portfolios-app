@@ -1,19 +1,28 @@
 variable "aws_account_id" {}
 variable "app_name" {}
-    
+
+provider "aws" {
+  region = "ap-northeast-1"
+}
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "{$var.app_name}_build_ecs"
+  versioning {enabled = true}
+}
+
 module "network" {
   source = "./network"
-  app_name = var.app_name
+  app_name = "{$var.app_name}_build_ecs"
 }
 
 ## Cluster
 resource "aws_ecs_cluster" "default" {
-  name = var.app_name
+  name = "{$var.app_name}_build_ecs"
 }
  
 ## Task
 resource "aws_ecs_task_definition" "default" {
-  family                             = var.app_name
+  family                             = "{$var.app_name}_build_ecs"
   requires_compatibilities           = ["FARGATE"]
   network_mode                       = "awsvpc"
   task_role_arn                      = "arn:aws:iam::${var.aws_account_id}:role/ecsExecRole"
@@ -30,7 +39,7 @@ resource "aws_ecs_service" "default" {
   deployment_maximum_percent         = 200
   desired_count                      = 1
   launch_type                        = "FARGATE"
-  name                               = var.app_name
+  name                               = "{$var.app_name}_build_ecs"
  
   network_configuration {
     assign_public_ip = "true"

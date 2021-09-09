@@ -6,8 +6,9 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
-data "aws_ssm_parameter" "amzn2_ami" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "{$var.app_name}_push_ecr"
+  versioning {enabled = true}
 }
 
 resource "aws_ecr_repository" "wordpress" {
@@ -20,12 +21,16 @@ resource "aws_ecr_repository" "mysql" {
 
 module "iam" {
   source      = "../iam"
-  name        = var.app_name
+  name        = "{$var.app_name}_push_ecr"
 }
 
 module "network" {
   source = "./network"
-  app_name = var.app_name
+  app_name = "{$var.app_name}_push_ecr"
+}
+
+data "aws_ssm_parameter" "amzn2_ami" {
+  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
 resource "aws_instance" "default" {
