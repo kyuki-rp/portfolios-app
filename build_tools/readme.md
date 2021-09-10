@@ -6,6 +6,15 @@
     sh $HOME/portfolios-app/build_tools/init_cloudshell/init_cloudshell.sh
     ```
 
+1. tfstate用s3を作成
+    ```
+    cd $HOME/portfolios-app/build_tools/create_tfstate_s3
+    terraform init
+    terraform plan
+    terraform apply --auto-approve
+    terraform destroy --auto-approve
+    ```
+
 1. ecrにpush
     ```
     cd $HOME/portfolios-app/build_tools/push_ecr
