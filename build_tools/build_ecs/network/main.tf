@@ -28,8 +28,8 @@ module "sg" {
   vpc_id      = aws_vpc.default.id
 }
 
-output "aws_subnet" {
-    value = aws_subnet.default
+output "aws_subnet_id" {
+    value = aws_subnet.default.id
 }
 
 output "aws_security_group_id" {

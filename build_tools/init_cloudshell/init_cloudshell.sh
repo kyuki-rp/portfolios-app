@@ -5,9 +5,11 @@ rm -r terraform_0.14.2_linux_amd64.zip
 terraform --version
 
 # vars.tfvars作成
+rm vars.tfvars
 UserId=`aws sts get-caller-identity | jq '.UserId'`
 Account=`aws sts get-caller-identity | jq '.Account'`
 Arn=`aws sts get-caller-identity | jq '.Arn'`
+rm vars.tfvars -f
 touch vars.tfvars
 echo "aws_user_id=$UserId" >> vars.tfvars
 echo "aws_account_id=$Account" >> vars.tfvars

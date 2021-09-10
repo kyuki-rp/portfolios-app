@@ -6,7 +6,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "{$var.app_name}_build_ecs"
+  bucket = "{$var.app_name}-build-ecs"
   versioning {enabled = true}
 }
 
@@ -43,7 +43,7 @@ resource "aws_ecs_service" "default" {
  
   network_configuration {
     assign_public_ip = "true"
-    subnets = [module.network.aws_subnet.id]
+    subnets = [module.network.aws_subnet_id]
     security_groups = [module.network.aws_security_group_id]
   }
  
