@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "default" {
-  bucket = "terraform-state"
+  bucket = "tfstate-u5n1k2x0"
   versioning {enabled = true}
 }
