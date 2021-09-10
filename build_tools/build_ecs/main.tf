@@ -13,7 +13,7 @@ resource "aws_ecs_cluster" "default" {
  
 ## Task
 resource "aws_ecs_task_definition" "default" {
-  family                             = "{$var.app_name}_build_ecs"
+  family                             = var.app_name
   requires_compatibilities           = ["FARGATE"]
   network_mode                       = "awsvpc"
   task_role_arn                      = "arn:aws:iam::${var.aws_account_id}:role/ecsExecRole"
