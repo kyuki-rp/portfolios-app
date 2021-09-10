@@ -6,11 +6,6 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
-resource "aws_s3_bucket" "terraform_state" {
-  bucket = "poto-push-ecr"
-  versioning {enabled = true}
-}
-
 resource "aws_ecr_repository" "wordpress" {
   name = "wordpress"
 }
