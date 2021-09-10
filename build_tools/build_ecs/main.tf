@@ -1,10 +1,6 @@
 variable "aws_account_id" {}
 variable "app_name" {}
 
-provider "aws" {
-  region = "ap-northeast-1"
-}
-
 module "network" {
   source = "./network"
   app_name = "{$var.app_name}_build_ecs"

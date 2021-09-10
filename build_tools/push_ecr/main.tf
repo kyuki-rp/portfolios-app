@@ -2,10 +2,6 @@
 variable "app_name" {}
 variable "aws_account_id" {}
 
-provider "aws" {
-  region = "ap-northeast-1"
-}
-
 resource "aws_ecr_repository" "wordpress" {
   name = "wordpress"
 }
