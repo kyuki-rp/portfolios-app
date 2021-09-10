@@ -8,7 +8,7 @@ module "network" {
 
 ## Cluster
 resource "aws_ecs_cluster" "default" {
-  name = "{$var.app_name}-build-ecs"
+  name = var.app_name
 }
  
 ## Task
