@@ -30,7 +30,7 @@ resource "aws_ecs_service" "default" {
   deployment_maximum_percent         = 200
   desired_count                      = 1
   launch_type                        = "FARGATE"
-  name                               = "{$var.app_name}_build_ecs"
+  name                               = var.app_name
  
   network_configuration {
     assign_public_ip = "true"
