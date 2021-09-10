@@ -7,7 +7,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "{$var.app_name}-push-ecr"
+  bucket = "poto-push-ecr"
   versioning {enabled = true}
 }
 

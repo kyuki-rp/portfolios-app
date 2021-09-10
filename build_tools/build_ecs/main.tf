@@ -6,7 +6,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "{$var.app_name}-build-ecs"
+  bucket = "poto-build-ecs"
   versioning {enabled = true}
 }
 
