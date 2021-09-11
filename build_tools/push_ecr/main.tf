@@ -17,7 +17,7 @@ module "iam" {
 
 module "network" {
   source = "./network"
-  name = "var.app_name
+  name = var.app_name
 }
 
 data "aws_ssm_parameter" "amzn2_ami" {
