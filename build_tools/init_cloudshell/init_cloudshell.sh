@@ -10,14 +10,12 @@ UserId=`aws sts get-caller-identity | jq '.UserId'`
 Account=`aws sts get-caller-identity | jq '.Account'`
 Arn=`aws sts get-caller-identity | jq '.Arn'`
 S3Bucket='"tfstate-u5n1k2x1"'
-AppName='"poto"'
 rm vars.tfvars -f
 touch vars.tfvars
 echo "aws_user_id=$UserId" >> vars.tfvars
 echo "aws_account_id=$Account" >> vars.tfvars
 echo "aws_arn=$Arn" >> vars.tfvars
 echo "tfstate_s3bucketname=$S3Bucket" >> vars.tfvars
-echo "app_name=$AppName" >> vars.tfvars
 
 # tfbackendの設定
 grep -lr --include="backend_config.tfbackend" "" ./* | xargs sed -i.bak -e "s/BucketName/$S3Bucket/g"

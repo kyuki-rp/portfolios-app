@@ -17,7 +17,7 @@ module "iam" {
 
 module "network" {
   source = "./network"
-  name = "{$var.app_name}push"
+  name = "var.app_name
 }
 
 data "aws_ssm_parameter" "amzn2_ami" {
@@ -29,7 +29,7 @@ resource "aws_instance" "default" {
     instance_type = "t2.micro"
     user_data = templatefile("userdata.sh", {aws_account_id=var.aws_account_id, region_name="ap-northeast-1"})
     key_name = "test"
-    tags = {"Name" = "${var.app_name}push"}
+    tags = {"Name" = var.app_name}
     vpc_security_group_ids = [module.network.aws_security_group_id]
     subnet_id = module.network.aws_subnet_id
     associate_public_ip_address = "true"
