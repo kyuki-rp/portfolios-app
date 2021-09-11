@@ -1,10 +1,10 @@
-variable "app_name" {}
+variable "name" {}
 
 resource "aws_vpc" "default" {
     cidr_block = "10.0.0.0/16"
     enable_dns_support = "true"
     enable_dns_hostnames = "true"
-    tags = {"Name" = var.app_name}
+    tags = {"Name" = var.name}
 }
 
 resource "aws_subnet" "default" {
@@ -12,19 +12,19 @@ resource "aws_subnet" "default" {
   availability_zone = "ap-northeast-1a"
   cidr_block = "10.0.0.0/24"
   map_public_ip_on_launch = "true"
-  tags = {"Name" = var.app_name}
+  tags = {"Name" = var.name}
 }
 
 module "igw" {
   source      = "../igw"
-  name        = var.app_name
+  name        = var.name
   vpc_id      = aws_vpc.default.id
   subnet_id   = aws_subnet.default.id
 }
 
 module "sg" {
   source      = "../sg"
-  name        = var.app_name
+  name        = var.name
   vpc_id      = aws_vpc.default.id
 }
 
