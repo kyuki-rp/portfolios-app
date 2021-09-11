@@ -12,7 +12,7 @@ resource "aws_subnet" "default" {
   availability_zone = "ap-northeast-1a"
   cidr_block = "10.0.0.0/24"
   map_public_ip_on_launch = "true"
-  tags = {Name = var.app_name}
+  tags = {"Name" = var.app_name}
 }
 
 module "igw" {
