@@ -1,0 +1,4 @@
+bucket = "tfstate-u5n1k2x1"
+key    = "tf_build_ecs.tfstate"
+region = "us-east-1"
+encrypt = true

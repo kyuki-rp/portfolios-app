@@ -18,7 +18,7 @@
 1. ecrにpush
     ```
     cd $HOME/portfolios-app/build_tools/push_ecr
-    terraform init
+    terraform init -reconfigure -backend-config=backend_config.tfbackend
     terraform plan -var-file=$HOME/vars.tfvars
     terraform apply -var-file=$HOME/vars.tfvars --auto-approve
     terraform destroy -var-file=$HOME/vars.tfvars --auto-approve
@@ -27,7 +27,7 @@
 1. ecsにbuild
     ```
     cd $HOME/portfolios-app/build_tools/build_ecs
-    terraform init
+    terraform init -reconfigure -backend-config=backend_config.tfbackend
     terraform plan -var-file=$HOME/vars.tfvars
     terraform apply -var-file=$HOME/vars.tfvars --auto-approve
     terraform destroy -var-file=$HOME/vars.tfvars --auto-approve
