@@ -10,9 +10,9 @@
     ```
     cd $HOME/portfolios-app/build_tools/create_tfstate_s3
     terraform init
-    terraform plan
-    terraform apply --auto-approve
-    terraform destroy --auto-approve
+    terraform plan -var-file=$HOME/vars.tfvars
+    terraform apply -var-file=$HOME/vars.tfvars --auto-approve
+    terraform destroy -var-file=$HOME/vars.tfvars --auto-approve
     ```
 
 1. ecrにpush
