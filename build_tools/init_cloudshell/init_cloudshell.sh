@@ -20,4 +20,4 @@ echo "tfstate_s3bucketname=$S3Bucket" >> vars.tfvars
 echo "app_name=$AppName" >> vars.tfvars
 
 # tfbackendの設定
--lr --include="backend_config.tfbackend" ./* | xargs sed -i.bak -e 's/BucketName/$S3Bucket/g'
+grep -lr --include="backend_config.tfbackend" "" ./* | xargs sed -i.bak -e "s/BucketName/$S3Bucket/g"
