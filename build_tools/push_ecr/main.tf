@@ -12,7 +12,7 @@ resource "aws_ecr_repository" "mysql" {
 
 module "iam" {
   source      = "./iam"
-  name        = "{$var.app_name}"
+  name        = var.app_name
 }
 
 module "network" {
