@@ -3,7 +3,7 @@ variable "app_name" {}
 
 module "network" {
   source = "./network"
-  app_name = "{$var.app_name}_build_ecs"
+  app_name = var.app_name
 }
 
 ## Cluster

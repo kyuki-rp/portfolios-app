@@ -1,5 +1,3 @@
-variable "tfstate_s3bucketname" {}
-
 provider "aws" {
   region = "ap-northeast-1"
 }
