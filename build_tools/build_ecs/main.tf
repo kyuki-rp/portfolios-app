@@ -35,7 +35,7 @@ resource "aws_ecs_service" "default" {
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
   desired_count                      = 1
-  launch_type                        = "FARGATE"
+#  launch_type                        = "FARGATE"
   name                               = var.app_name
  
   network_configuration {
