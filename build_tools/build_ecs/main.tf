@@ -24,8 +24,8 @@ resource "aws_ecs_task_definition" "default" {
   network_mode                       = "awsvpc"
   task_role_arn                      = "arn:aws:iam::${var.aws_account_id}:role/ecsExecRole"
   execution_role_arn                 = "arn:aws:iam::${var.aws_account_id}:role/ecsTaskExecutionRole"
-  cpu                                = 512
-  memory                             = 1024
+  cpu                                = 256
+  memory                             = 512
   container_definitions              = templatefile("./container_definitions.json", {aws_account_id = var.aws_account_id})
 }
 
@@ -42,6 +42,16 @@ resource "aws_ecs_service" "default" {
     assign_public_ip = "true"
     subnets = [module.network.aws_subnet_id]
     security_groups = [module.network.aws_security_group_id]
+  }
+
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE_SPOT"
+    weight            = 100
+  }
+
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE"
+    weight            = 0
   }
  
   task_definition = aws_ecs_task_definition.default.arn
