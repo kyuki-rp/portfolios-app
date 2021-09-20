@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "ingress_http" {
   security_group_id = aws_security_group.default.id
 }
 
-resource "aws_security_group_rule" "ingress_http" {
+resource "aws_security_group_rule" "ingress_http2" {
   type              = "ingress"
   from_port         = 8080
   to_port           = 8080
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "ingress_http" {
   security_group_id = aws_security_group.default.id
 }
 
-resource "aws_security_group_rule" "ingress_http" {
+resource "aws_security_group_rule" "ingress_http3" {
   type              = "ingress"
   from_port         = 8090
   to_port           = 8090
