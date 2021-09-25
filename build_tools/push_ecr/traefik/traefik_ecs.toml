@@ -1,0 +1,15 @@
+[web]
+address = ":8080"
+readOnly = true
+[web.metrics.prometheus]
+buckets=[0.1,0.3,1.2,5.0]
+
+
+[ecs]
+clusters = ["potobuild"]
+watch = true
+domain = "middenii.com"
+autoDiscoverClusters = false
+refreshSeconds = 15
+exposedByDefault = true
+region = "ap-northeast-1"

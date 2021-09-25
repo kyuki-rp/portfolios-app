@@ -23,3 +23,7 @@ sudo docker tag wordpress:latest ${aws_account_id}.dkr.ecr.${region_name}.amazon
 sudo docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/wordpress:latest
 sudo docker tag mysql:5.7 ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/mysql:5.7
 sudo docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/mysql:5.7
+
+docker build -f /home/ec2-user/cloudtools/build_tools/push_ecr/traefik/Dockerfile -t traefik:latest .
+docker tag traefik:latest ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
+docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
