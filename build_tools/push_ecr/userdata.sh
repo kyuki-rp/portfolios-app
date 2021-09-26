@@ -25,5 +25,5 @@ sudo su -
 # sudo docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/mysql:5.7
 
 docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/traefik/docker-compose.yml up -d
-docker tag traefik:latest ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
+docker tag traefik:v1.4.1-alpine ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
 docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
