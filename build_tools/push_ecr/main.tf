@@ -10,6 +10,10 @@ resource "aws_ecr_repository" "mysql" {
   name = "mysql"
 }
 
+resource "aws_ecr_repository" "traefik" {
+  name = "traefik"
+}
+
 module "iam" {
   source      = "./iam"
   name        = var.app_name
