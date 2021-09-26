@@ -2,7 +2,6 @@ version: '3'
 services:
   wordpress:
     build: . # カレントディレクトリのDockerfileでイメージをビルド
-    image: traefik:v1.4.1-alpine # イメージ名はwp-sampleとする
     ports:
       - '80:80' # ローカルのport80でコンテナのport80にアクセスできるようにする
       - '8080:8080'
