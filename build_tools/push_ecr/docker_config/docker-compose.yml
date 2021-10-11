@@ -1,27 +1,24 @@
 version: '3'
+
 services:
-  wordpress:
-    build: . # カレントディレクトリのDockerfileでイメージをビルド
-    image: wordpress:latest # イメージ名はwp-sampleとする
+  # reverse-proxy:
+  #   # The official v2 Traefik docker image
+  #   image: traefik:v2.5
+  #   # Enables the web UI and tells Traefik to listen to docker
+  #   command: --api.insecure=true --providers.docker --log=true --accesslog=true
+  #   ports:
+  #     # The HTTP port
+  #     - "80:80"
+  #     # The Web UI (enabled by --api.insecure=true)
+  #     - "8080:8080"
+  #   volumes:
+  #     # So that Traefik can listen to the Docker events
+  #     - /var/run/docker.sock:/var/run/idocker.sock
+  whoami:
+    # A container that exposes an API to show its IP address
+    image: traefik/whoami
     ports:
-      - '80:80' # ローカルのport80でコンテナのport80にアクセスできるようにする
-    depends_on:
-      - db
-    environment:
-      WORDPRESS_DB_HOST: db:3306 # データベースコンテナ名と一致させる
-      WORDPRESS_DB_NAME: wordpress # MYSQL_DATABASEと一致させる
-      WORDPRESS_DB_USER: wordpress # MYSQL_USERと一致させる
-      WORDPRESS_DB_PASSWORD: wordpress # MYSQL_PASSWORDと一致させる
-  db:
-    image: mysql:5.7
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root_pass
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-volumes:
-  mysql_data:
+      # The HTTP port
+      - "80:80"
+    # labels:
+    #   - "traefik.http.routers.whoami-1.rule=Host(`whoami.54.238.39.6.nip.io`) && PathPrefix(`/whoami`)"

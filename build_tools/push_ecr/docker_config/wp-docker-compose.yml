@@ -1,0 +1,27 @@
+version: '3'
+services:
+  wordpress:
+    build: . # カレントディレクトリのDockerfileでイメージをビルド
+    image: wordpress:latest # イメージ名はwp-sampleとする
+    ports:
+      - '80:80' # ローカルのport80でコンテナのport80にアクセスできるようにする
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306 # データベースコンテナ名と一致させる
+      WORDPRESS_DB_NAME: wordpress # MYSQL_DATABASEと一致させる
+      WORDPRESS_DB_USER: wordpress # MYSQL_USERと一致させる
+      WORDPRESS_DB_PASSWORD: wordpress # MYSQL_PASSWORDと一致させる
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+volumes:
+  mysql_data:

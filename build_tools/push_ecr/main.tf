@@ -2,6 +2,7 @@
 variable "app_name" {}
 variable "aws_account_id" {}
 
+/*
 resource "aws_ecr_repository" "wordpress" {
   name = "wordpress"
 }
@@ -9,9 +10,14 @@ resource "aws_ecr_repository" "wordpress" {
 resource "aws_ecr_repository" "mysql" {
   name = "mysql"
 }
+*/
 
 resource "aws_ecr_repository" "traefik" {
   name = "traefik"
+}
+
+resource "aws_ecr_repository" "traefik" {
+  name = "whoami"
 }
 
 module "iam" {

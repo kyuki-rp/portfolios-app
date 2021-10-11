@@ -18,12 +18,19 @@ git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtoo
 aws ecr get-login-password --region ${region_name} | sudo docker login --username AWS --password-stdin ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com
 # Building image
 sudo su -
+# wp
 # docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/docker_config/docker-compose.yml up -d
 # sudo docker tag wordpress:latest ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/wordpress:latest
 # sudo docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/wordpress:latest
 # sudo docker tag mysql:5.7 ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/mysql:5.7
 # sudo docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/mysql:5.7
 
-docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/traefik/docker-compose.yml up -d
-docker tag traefik:v1.4.1-alpine ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
-docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
+# traefik
+# docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/traefik/docker-compose.yml up -d
+# docker tag traefik:v1.4.1-alpine ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
+# docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
+
+# whoami
+docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/docker_config/docker-compose.yml up -d
+docker tag whoami:latest ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/whoami:latest
+docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/whoami:latest
