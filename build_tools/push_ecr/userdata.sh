@@ -32,5 +32,5 @@ sudo su -
 
 # whoami
 docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/docker_config/docker-compose.yml up -d
-docker tag whoami:latest ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/whoami:latest
+docker tag traefik/whoami:latest ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/whoami:latest
 docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/whoami:latest
