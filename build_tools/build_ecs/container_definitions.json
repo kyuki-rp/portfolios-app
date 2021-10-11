@@ -18,25 +18,5 @@
         "containerPort": 443
       }
     ]
-  },
-    {
-      "name": "whoami",
-      "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/whoami:latest",
-      "networkMode": "awsvpc",
-      "memoryReservation": 256,
-      "essential": true,
-
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "protocol": "tcp",
-          "containerPort": 80
-        }
-      ],
-      "dockerLabels": 
-      {
-        "traefik.http.routers.whoami.rule": "Host(`whoami.middenii.com`) && PathPrefix(`/whoami`)",
-        "traefik.enable": "true"
-      }
-    }
+  }
   ]
