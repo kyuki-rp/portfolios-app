@@ -16,7 +16,7 @@ resource "aws_ecr_repository" "traefik" {
   name = "traefik"
 }
 
-resource "aws_ecr_repository" "traefik" {
+resource "aws_ecr_repository" "whoami" {
   name = "whoami"
 }
 
