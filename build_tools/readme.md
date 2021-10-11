@@ -32,5 +32,3 @@
     terraform apply -var-file=$HOME/vars.tfvars -var-file=appname.tfvars --auto-approve
     terraform destroy -var-file=$HOME/vars.tfvars -var-file=appname.tfvars --auto-approve
     ```
-
-1. 
