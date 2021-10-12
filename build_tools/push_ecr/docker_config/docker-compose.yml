@@ -21,4 +21,4 @@ services:
       # The HTTP port
       - "80"
     labels:
-      - "traefik.http.routers.whoami.rule=Host(`whoami.54.238.39.6.nip.io`) && PathPrefix(`/whoami`)"
+      - "traefik.http.routers.whoami.rule=Host(`test.middnii.com`) && PathPrefix(`/whoami`)"

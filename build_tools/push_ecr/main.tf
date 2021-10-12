@@ -20,6 +20,7 @@ resource "aws_ecr_repository" "whoami" {
   name = "whoami"
 }
 
+
 module "iam" {
   source      = "./iam"
   name        = var.app_name
@@ -44,4 +45,12 @@ resource "aws_instance" "default" {
     subnet_id = module.network.aws_subnet_id
     associate_public_ip_address = "true"
     iam_instance_profile = module.iam.aws_iam_instance_profile_name
+}
+
+resource "aws_route53_record" "default" {
+   zone_id = "Z0191078H0OBUFZ5GAFT"
+   name = "test.middenii.com"
+   type = "A"
+   ttl = "300"
+   records = [aws_instance.default.public_ip]
 }
