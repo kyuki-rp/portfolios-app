@@ -49,7 +49,7 @@ resource "aws_instance" "default" {
 
 resource "aws_route53_record" "default" {
    zone_id = "Z0191078H0OBUFZ5GAFT"
-   name = "test.middenii.com"
+   name = "works.middenii.com"
    type = "A"
    ttl = "300"
    records = [aws_instance.default.public_ip]
