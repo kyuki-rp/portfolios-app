@@ -27,7 +27,7 @@ sudo su -
 
 # traefik
 docker-compose -f /home/ec2-user/cloudtools/build_tools/push_ecr/docker_config/docker-compose.yml up -d
-docker tag traefik:v1.4.1-alpine ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
+docker tag traefik:v2.5 ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
 docker push ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com/traefik:latest
 
 # whoami
