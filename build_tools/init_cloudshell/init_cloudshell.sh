@@ -10,8 +10,7 @@ UserId=`aws sts get-caller-identity | jq '.UserId'`
 Account=`aws sts get-caller-identity | jq '.Account'`
 Arn=`aws sts get-caller-identity | jq '.Arn'`
 S3Bucket='"tfstate-u5n1k2x1"'
-DomainName='"middenii.com."'
-HostZoneId=`aws route53 list-hosted-zones --output json | jq -r ".HostedZones[] | select(.Name == $DomainName) | .Id"`
+HostZoneId=`aws route53 list-hosted-zones --output json | jq -r ".HostedZones[] | select(.Name == /"$DomainName./") | .Id"`
 HostZoneId=\"${HostZoneId#\/hostedzone\/}\"
 rm vars.tfvars -f
 touch vars.tfvars
