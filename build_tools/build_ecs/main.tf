@@ -48,7 +48,7 @@ resource "aws_ecs_service" "traefik" {
   deployment_maximum_percent         = 200
   desired_count                      = 1
 #  launch_type                       = "FARGATE"
-  name                               = traefik
+  name                               = "traefik"
  
   network_configuration {
     assign_public_ip = "true"
@@ -78,7 +78,7 @@ resource "aws_ecs_service" "whoami" {
   deployment_maximum_percent         = 200
   desired_count                      = 1
 #  launch_type                       = "FARGATE"
-  name                               = whoami
+  name                               = "whoami"
  
   network_configuration {
     assign_public_ip = "true"
