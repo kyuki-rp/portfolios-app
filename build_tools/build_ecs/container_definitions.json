@@ -10,8 +10,7 @@
       "awslogs-stream-prefix": "traefik-prod"
               }
     },
-    "memoryReservation": 400,
-    "cpu": 512,
+    "memoryReservation": 256,
     "portMappings": [
               {
       "containerPort": 80
