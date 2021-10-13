@@ -5,6 +5,10 @@ if [ $# != 1 ]; then
 fi
 DomainName=$1
 
+# HOMEディレクトリに移動
+HOME=/home/cloudshell-user
+cd $HOME
+
 # terraformインストール
 wget https://releases.hashicorp.com/terraform/0.14.2/terraform_0.14.2_linux_amd64.zip
 sudo unzip terraform_0.14.2_linux_amd64.zip -d /usr/local/bin/
