@@ -1,6 +1,8 @@
 
 variable "app_name" {}
 variable "aws_account_id" {}
+variable "hostzone_id" {}
+variable "domain_name" {}
 
 /*
 resource "aws_ecr_repository" "wordpress" {
@@ -48,8 +50,8 @@ resource "aws_instance" "default" {
 }
 
 resource "aws_route53_record" "default" {
-   zone_id = "Z0191078H0OBUFZ5GAFT"
-   name = "works.middenii.com"
+   zone_id = var.hostzone_id
+   name = "works.${var.domain_name}"
    type = "A"
    ttl = "300"
    records = [aws_instance.default.public_ip]
