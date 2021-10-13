@@ -26,12 +26,7 @@
         "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/whoami:latest",
         "memoryReservation": 256,
         "essential": true,
-  
-        "portMappings": [
-          {
-            "containerPort": 80
-          }
-        ],
+
         "dockerLabels": 
         {
           "traefik.http.routers.whoami.rule": "Host(`works.middenii.com`) && PathPrefix(`/whoami`)",
