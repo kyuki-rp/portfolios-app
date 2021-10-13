@@ -3,15 +3,10 @@
     "name": "traefik",
     "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/traefik:latest",
     "memoryReservation": 256,
-    "command": [
-      "--ping",
-      "--ping.entrypoint=http",
-      "--ecs.clusters=potobuild",
-      "--ecs.exposedbydefault=false",
-      "--loglevel=DEBUG"
-    ],
     "portMappings": [
               {
+      "hostPort": 80,
+      "protocol": "tcp",
       "containerPort": 80
               },
               {
@@ -25,5 +20,22 @@
               "traefik.frontend.rule" : "Host:works.middenii.com",
               "traefik.port" : "8080"
           }
+  },
+      {
+        "name": "whoami",
+        "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/whoami:latest",
+        "memoryReservation": 256,
+        "essential": true,
+  
+        "portMappings": [
+          {
+            "containerPort": 80
+          }
+        ],
+        "dockerLabels": 
+        {
+          "traefik.http.routers.whoami.rule": "Host(`works.middenii.com`) && PathPrefix(`/whoami`)",
+          "traefik.enable": "true"
+        }
       }
   ]
