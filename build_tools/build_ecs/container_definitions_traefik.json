@@ -17,20 +17,8 @@
     ],
     "dockerLabels" :           {
               "traefik.enable" : "true",
-              "traefik.frontend.rule" : "Host:works.middenii.com",
+              "traefik.frontend.rule" : "Host:works.${domain_name}",
               "traefik.port" : "8080"
           }
-  },
-      {
-        "name": "whoami",
-        "image": "${aws_account_id}.dkr.ecr.ap-northeast-1.amazonaws.com/whoami:latest",
-        "memoryReservation": 256,
-        "essential": true,
-
-        "dockerLabels": 
-        {
-          "traefik.http.routers.whoami.rule": "Host(`works.middenii.com`) && PathPrefix(`/whoami`)",
-          "traefik.enable": "true"
-        }
-      }
-  ]
+  }
+]
