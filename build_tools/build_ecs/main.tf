@@ -1,5 +1,6 @@
 variable "aws_account_id" {}
 variable "app_name" {}
+variable "domain_name" {}
 
 module "network" {
   source = "./network"
@@ -26,7 +27,7 @@ resource "aws_ecs_task_definition" "default" {
   execution_role_arn                 = "arn:aws:iam::${var.aws_account_id}:role/ecsTaskExecutionRole"
   cpu                                = 256
   memory                             = 512
-  container_definitions              = templatefile("./container_definitions.json", {aws_account_id = var.aws_account_id})
+  container_definitions              = templatefile("./container_definitions.json", {aws_account_id = var.aws_account_id, domain_name = var.domain_name})
 }
 
 ## Service

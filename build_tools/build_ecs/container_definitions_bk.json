@@ -35,7 +35,7 @@
       ],
       "dockerLabels": 
       {
-        "traefik.http.routers.whoami.rule": "Host(`whoami.middenii.com`) && PathPrefix(`/whoami`)",
+        "traefik.http.routers.whoami.rule": "Host(`works.${domain_name}`) && PathPrefix(`/whoami`)",
         "traefik.enable": "true"
       }
     }
