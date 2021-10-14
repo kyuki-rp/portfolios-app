@@ -12,7 +12,6 @@ resource "aws_ecr_repository" "wordpress" {
 resource "aws_ecr_repository" "mysql" {
   name = "mysql"
 }
-*/
 
 resource "aws_ecr_repository" "traefik" {
   name = "traefik"
@@ -21,7 +20,7 @@ resource "aws_ecr_repository" "traefik" {
 resource "aws_ecr_repository" "whoami" {
   name = "whoami"
 }
-
+*/
 
 module "iam" {
   source      = "./iam"
