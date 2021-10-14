@@ -8,7 +8,7 @@ services:
     command: --api.insecure=true --providers.docker --log=true --accesslog=true
     ports:
       # The HTTP port
-      - "80:80"
+      - "80:8090"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
     volumes:
@@ -18,7 +18,7 @@ services:
     image: traefik/whoami:latest
     ports:
       # The HTTP port
-      - "80"
+      - "8090"
     labels:
       - "traefik.http.routers.whoami-1.rule=Host(`works.middenii.com`) && PathPrefix(`/whoami-1`)"
 

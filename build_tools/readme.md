@@ -3,7 +3,7 @@
 1. 初期設定を実施
     ```
     git clone https://github.com/kyuki-rp/portfolios-app.git
-    sh $HOME/portfolios-app/build_tools/init_cloudshell/init_cloudshell.sh
+    sh $HOME/portfolios-app/build_tools/init_cloudshell/init_cloudshell.sh example.com
     ```
 
 1. tfstate用s3を作成
