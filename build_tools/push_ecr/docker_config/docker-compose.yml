@@ -29,7 +29,7 @@ services:
       WORDPRESS_DB_USER: wordpress # MYSQL_USERと一致させる
       WORDPRESS_DB_PASSWORD: wordpress # MYSQL_PASSWORDと一致させる
     labels:
-      - "traefik.http.routers.wordpress.rule=Host(`wp.middenii.com`)"
+      - "traefik.http.routers.wordpress.rule=Host(`works.middenii.com`)"
 
   db:
     image: mysql:5.7
