@@ -16,7 +16,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       
   
-    wordpress:
+  wordpress:
     build: . # カレントディレクトリのDockerfileでイメージをビルド
     image: wordpress:latest # イメージ名はwp-sampleとする
     ports:
