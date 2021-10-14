@@ -20,7 +20,7 @@ services:
     build: . # カレントディレクトリのDockerfileでイメージをビルド
     image: wordpress:latest # イメージ名はwp-sampleとする
     ports:
-      - '80' # ローカルのport80でコンテナのport80にアクセスできるようにする
+      - "80" # ローカルのport80でコンテナのport80にアクセスできるようにする
     depends_on:
       - db
     environment:
@@ -29,7 +29,7 @@ services:
       WORDPRESS_DB_USER: wordpress # MYSQL_USERと一致させる
       WORDPRESS_DB_PASSWORD: wordpress # MYSQL_PASSWORDと一致させる
     labels:
-      - "traefik.http.routers.wordpress.rule=Host(`works.middenii.com`) && PathPrefix(`/test`)"
+      - "traefik.http.routers.wordpress.rule=Host(`works.middenii.com`) && PathPrefix(`/wpp`)"
 
   db:
     image: mysql:5.7
