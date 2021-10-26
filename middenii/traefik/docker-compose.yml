@@ -1,0 +1,8 @@
+version: '3'
+services:
+  traefik:
+    build: . # カレントディレクトリのDockerfileでイメージをビルド
+    ports:
+      - '80:80' # ローカルのport80でコンテナのport80にアクセスできるようにする
+      - '8080:8080'
+      - '443:443'
