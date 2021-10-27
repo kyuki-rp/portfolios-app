@@ -20,4 +20,5 @@ aws ecr get-login-password --region ${region_name} | sudo docker login --usernam
 sudo su -
 
 # docker compose
-docker-compose -f /home/ec2-user/cloudtools/middenii/docker_config/docker-compose.yml up -d
+docker-compose -f /home/ec2-user/cloudtools/middenii/docker_config/traefik/docker-compose.yml up -d
+docker-compose -f /home/ec2-user/cloudtools/middenii/docker_config/fastapi/docker-compose.yml up -d
