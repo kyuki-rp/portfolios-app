@@ -14,8 +14,6 @@ sudo yum install git-all -y
 # git clone
 git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtools
 
-# AWS ECR login
-aws ecr get-login-password --region ${region_name} | sudo docker login --username AWS --password-stdin ${aws_account_id}.dkr.ecr.${region_name}.amazonaws.com
 # Building image
 sudo su -
 
