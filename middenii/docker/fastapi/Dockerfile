@@ -2,7 +2,6 @@ FROM python:3.8-alpine
 
 WORKDIR /app
 
-COPY requirements.txt .
 # コンテナ内で必要なパッケージをインストール
 RUN pip install fastapi
 RUN pip install uvicorn
