@@ -2,6 +2,8 @@ FROM node:16-alpine
 
 WORKDIR /var/www/app
 
-CMD npm init -y
-CMD npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom
-CMD npm i react react-dom
+RUN npm init -y
+RUN npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom
+RUN npm i react react-dom
+
+ENTRYPOINT ["npx", "webpack", "serve"]
