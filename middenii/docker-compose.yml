@@ -38,16 +38,16 @@ services:
   #     - "traefik.http.routers.whoami.tls.certresolver=myhttpchallenge"
   #     - "traefik.http.routers.whoami.tls.domains[0].main=works.middenii.com" #optionally restrict domain
 
-  app:
-    build:
-      context: ./docker/fastapi
-      dockerfile: Dockerfile
-    container_name: "app"
-    volumes:
-      - ./docker/fastapi.dockervenv:/src/.venv
-      - ./docker/fastapi:/src
-    ports:
-      - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
+  # app:
+  #   build:
+  #     context: ./docker/fastapi
+  #     dockerfile: Dockerfile
+  #   container_name: "app"
+  #   volumes:
+  #     - ./docker/fastapi.dockervenv:/src/.venv
+  #     - ./docker/fastapi:/src
+  #   ports:
+  #     - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
 
   node:
     build:
@@ -60,4 +60,5 @@ services:
     command: sh -c "npx webpack serve && /bin/sh"
     ports:
       - 3000:3000
+
 
