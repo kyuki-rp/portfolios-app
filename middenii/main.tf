@@ -38,7 +38,7 @@ data "aws_ssm_parameter" "amzn2_ami" {
 
 resource "aws_instance" "default" {
     ami = data.aws_ssm_parameter.amzn2_ami.value
-    instance_type = "t2.micro"
+    instance_type = "t2.large"
     user_data = templatefile("userdata.sh", {aws_account_id=var.aws_account_id, region_name="ap-northeast-1"})
     key_name = "test"
     tags = {"Name" = var.app_name}
