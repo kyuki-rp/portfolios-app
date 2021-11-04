@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import ViewAll from "./view_all";  // 追加することで<Sample />が利用できる
 import ViewOne from "./view_one";  // 追加することで<Sample />が利用できる
 
