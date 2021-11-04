@@ -13,10 +13,6 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: "ts-loader"
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
       }
     ]
   },
