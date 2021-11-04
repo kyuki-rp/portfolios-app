@@ -18,6 +18,7 @@ git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtoo
 sudo su -
 
 # docker compose
-docker-compose -f /home/ec2-user/cloudtools/middenii/docker-compose.yml build
+cd /home/ec2-user/cloudtools/middenii
+docker-compose build
 docker-compose run frontend sh -c "npm init -y && npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom && npm i react react-dom"
-docker-compose -f /home/ec2-user/cloudtools/middenii/docker-compose.yml up -d
+docker-compose up -d
