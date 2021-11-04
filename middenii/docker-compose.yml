@@ -49,10 +49,11 @@ services:
   #   ports:
   #     - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
 
-  node:
+  frontend:
     build:
       context: ./docker/react
       dockerfile: Dockerfile
+      container_name: "frontend"
     tty: true
     volumes:
       - ./docker/react:/var/www/app
