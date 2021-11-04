@@ -1,8 +1,10 @@
-FROM python:3.8-alpine
+# python3.9のイメージをダウンロード
+FROM python:3.9-buster
+ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app
+WORKDIR /src
 
-# コンテナ内で必要なパッケージをインストール
+# pipを使ってpoetryをインストール
 RUN pip install fastapi
 RUN pip install uvicorn
 RUN pip install pandas
