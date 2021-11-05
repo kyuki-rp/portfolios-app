@@ -1,16 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleComponent } from './sample-component';
-// import ViewAll from "./view_all";  // 追加することで<Sample />が利用できる
-// import ViewOne from "./view_one";  // 追加することで<Sample />が利用できる
+import Button from 'react-bootstrap/Button';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-      <h1>React Example</h1>
-      <SampleComponent name="Counter"/>
-    </div>
+        <h1>React Example</h1>
+        <SampleComponent name="Counter"/>
+        <div className="card">
+          <div className="card-body">
+            <Button variant="outline-primary">プライマリーボタン</Button>
+          </div>
+        </div>
+      </div>
     );
   }
 }
