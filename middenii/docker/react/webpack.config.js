@@ -24,6 +24,8 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     historyApiFallback: true,
-		host: "0.0.0.0"
+		host: "0.0.0.0",
+    port: 3000
+
 	}
 };
