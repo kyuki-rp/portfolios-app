@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 ReactDOM.render(
   <div className="card">
     <div className="card-body">
+      <p>bootstrap</p>
       <Button variant="outline-primary">プライマリーボタン</Button>
     </div>
   </div>,
