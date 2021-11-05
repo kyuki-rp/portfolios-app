@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        test: /\.tsx?$/,
         use: "ts-loader"
       }
     ]
@@ -24,7 +24,6 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     historyApiFallback: true,
-	host: "0.0.0.0",
-    port: 3000
+		host: "0.0.0.0"
 	}
 };
