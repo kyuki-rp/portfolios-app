@@ -4,7 +4,7 @@ module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    filename: "index.js",
+    filename: "main.js",
     path: path.resolve("dist"),
     publicPath: "/",
   },
