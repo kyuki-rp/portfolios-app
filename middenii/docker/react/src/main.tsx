@@ -8,7 +8,7 @@ class App extends React.Component {
       <div>
         <h1>React Example</h1>
         <SampleComponent name="Counter"/>
-        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" className="btn btn-primary">Primary</button>
       </div>
     );
   }
