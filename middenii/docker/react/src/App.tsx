@@ -7,12 +7,6 @@ function App() {
   return (
     <>
       <h1>今日の星座占い</h1>
-      <div className="card">
-        <div className="card-body">
-          <p>bootstrap</p>
-          <Button variant="outline-primary">プライマリーボタン</Button>
-        </div>
-      </div>
     </>
   );
 }
