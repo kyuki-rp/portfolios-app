@@ -10,8 +10,8 @@ class App extends React.Component {
       <>
       <h1>React Example</h1>
       <SampleComponent name="Counter"/>
-      <ViewOne />
-      <ViewAll />
+      {/* <ViewOne />
+      <ViewAll /> */}
       </>
     );
   }
