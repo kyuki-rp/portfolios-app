@@ -13,10 +13,6 @@ module.exports = {
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         use: "ts-loader"
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
       }
     ]
   },
