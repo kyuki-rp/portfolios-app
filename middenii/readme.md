@@ -6,7 +6,7 @@
     sh $HOME/portfolios-app/build_tools/init_cloudshell/init_cloudshell.sh example.com
     ```
 
-1. ecrにpush
+1. ec2起動
     ```
     cd $HOME/portfolios-app/middenii
     terraform init -reconfigure -backend-config=backend_config.tfbackend
