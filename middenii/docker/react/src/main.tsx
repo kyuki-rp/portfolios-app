@@ -7,8 +7,10 @@ import ViewOne from "./view_one";  // 追加することで<Sample />が利用�
 class App extends React.Component {
   render() {
     return (
+      <>
       <ViewOne />
       <ViewAll />
+      </>
     );
   }
 }
