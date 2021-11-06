@@ -1,31 +1,31 @@
 version: '3'
 services:
-  # reverse-proxy:
-  #   # The official v2 Traefik docker image
-  #   image: traefik:v2.5
-  #   # Enables the web UI and tells Traefik to listen to docker
-  #   command:
-  #     # - "--log.level=DEBUG"
-  #     - "--api.insecure=true"
-  #     - "--providers.docker=true"
-  #     - "--providers.docker.exposedbydefault=false"
-  #     - "--entrypoints.web.address=:80"
-  #     - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-  #     - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-  #     - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
-  #     - "--entrypoints.websecure.address=:443"
-  #     - "--certificatesresolvers.myhttpchallenge.acme.httpchallenge=true"
-  #     - "--certificatesresolvers.myhttpchallenge.acme.httpchallenge.entrypoint=web"
-  #     - "--certificatesresolvers.myhttpchallenge.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory" # staging
-  #     - "--certificatesresolvers.myhttpchallenge.acme.email=info@middenii.com"
-  #     - "--certificatesresolvers.myhttpchallenge.acme.storage=/letsencrypt/acme.json"      
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #     - "8080:8080"
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - "./letsencrypt:/letsencrypt"
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.5
+    # Enables the web UI and tells Traefik to listen to docker
+    command:
+      # - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myhttpchallenge.acme.httpchallenge=true"
+      - "--certificatesresolvers.myhttpchallenge.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myhttpchallenge.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory" # staging
+      - "--certificatesresolvers.myhttpchallenge.acme.email=info@middenii.com"
+      - "--certificatesresolvers.myhttpchallenge.acme.storage=/letsencrypt/acme.json"      
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./letsencrypt:/letsencrypt"
 
   # whoami:
   #   # A container that exposes an API to show its IP address
@@ -61,5 +61,12 @@ services:
     command: sh -c "npx webpack serve && /bin/sh"
     ports:
       - 3000:3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/frontend`)"
+      - "traefik.http.routers.frontend.tls=true" #sets the service to use 
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
 
 
