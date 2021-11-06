@@ -1,10 +1,14 @@
 
-import React from "react";
-import axios from "axios";
+import * as React from "react";
+import * as axios from "axios";
 
-// const res = axios.get('http://localhost:8000/')
+interface Props {}
+interface State {
+  status: string,
+  res: []
+}
 
-class ViewAll extends React.Component {
+class ViewAll extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {status:'yet', res :[]};
