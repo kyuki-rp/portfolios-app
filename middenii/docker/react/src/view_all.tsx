@@ -16,7 +16,7 @@ class ViewAll extends React.Component<Props, State> {
 
   handleClick = () => {
     axios
-     .get("http://localhost:8000/view_all")
+     .get("http://works.middenii.com:8000/view_all")
       .then(res => {
           this.setState({status:res.data.status, res:res.data.main});
         })
@@ -34,7 +34,7 @@ class ViewAll extends React.Component<Props, State> {
             </div>
           :
             <table className="table table-striped caption-top">
-                <caption class="h2">結果一覧</caption>
+                <caption className="h2">結果一覧</caption>
                 <thead>
                 <tr>
                     <th scope="col">順位</th>
