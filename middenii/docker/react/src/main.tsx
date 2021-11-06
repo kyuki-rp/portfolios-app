@@ -5,10 +5,9 @@ import { SampleComponent } from './sample-component';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <h1>React Example</h1>
-        <SampleComponent name="Counter"/>
-      </div>
+      <>
+        <h1>今日の星座占い</h1>
+      </>
     );
   }
 }
