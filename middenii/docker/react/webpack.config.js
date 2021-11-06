@@ -28,6 +28,7 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     historyApiFallback: true,
+    allowedHosts: 'auto',
     port: 3000
 	}
 };
