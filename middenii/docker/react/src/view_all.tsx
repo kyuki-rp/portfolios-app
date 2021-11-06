@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import * as axios from "axios";
+import axios from "axios";
 
 interface Props {}
 interface State {
