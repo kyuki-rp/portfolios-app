@@ -9,6 +9,7 @@ class App extends React.Component {
     return (
       <>
         <h1>今日の星座占い</h1>
+        <ViewOne />
         <ViewAll />
       </>
     );
