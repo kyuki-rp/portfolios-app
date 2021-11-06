@@ -27,28 +27,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - "./letsencrypt:/letsencrypt"
 
-  # whoami:
-  #   # A container that exposes an API to show its IP address
-  #   image: containous/whoami
-  #   labels:
-  #     - "traefik.enable=true"
-  #     - "traefik.http.routers.whoami.rule=Host(`works.middenii.com`)  && PathPrefix(`/whoami`)"
-  #     - "traefik.http.routers.whoami.tls=true" #sets the service to use 
-  #     - "traefik.http.routers.whoami.entrypoints=websecure"
-  #     - "traefik.http.routers.whoami.tls.certresolver=myhttpchallenge"
-  #     - "traefik.http.routers.whoami.tls.domains[0].main=works.middenii.com" #optionally restrict domain
 
-  backend:
-    build:
-      context: ./docker/fastapi
-      dockerfile: Dockerfile
-    container_name: "backend"
-    volumes:
-      - ./docker/fastapi.dockervenv:/src/.venv
-      - ./docker/fastapi:/src
-    ports:
-      - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
-      
   frontend:
     build:
       context: ./docker/react
@@ -70,3 +49,14 @@ services:
       - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
 
 
+  backend:
+    build:
+      context: ./docker/fastapi
+      dockerfile: Dockerfile
+    container_name: "backend"
+    volumes:
+      - ./docker/fastapi.dockervenv:/src/.venv
+      - ./docker/fastapi:/src
+    ports:
+      - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
+      
