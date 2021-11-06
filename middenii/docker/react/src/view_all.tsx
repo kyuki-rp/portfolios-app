@@ -2,10 +2,17 @@
 import * as React from "react";
 import axios from "axios";
 
+interface Res {
+  rank: string,
+  zodiac_sign: string,
+  score: string,
+  star: string
+}
+
 interface Props {}
 interface State {
   status: string,
-  res: []
+  res: Res[]
 }
 
 class ViewAll extends React.Component<Props, State> {
