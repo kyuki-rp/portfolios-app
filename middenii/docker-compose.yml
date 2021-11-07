@@ -28,11 +28,11 @@ services:
       - "./letsencrypt:/letsencrypt"
 
 
-  frontend:
+  zodiac_frontend:
     build:
       context: ./docker/react
       dockerfile: Dockerfile
-    container_name: "frontend"
+    container_name: "zodiac_frontend"
     tty: true
     volumes:
       - ./docker/react:/var/www/app
@@ -47,16 +47,28 @@ services:
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+    networks:
+      - zodiac
 
-
-  backend:
+  zodiac_backend:
     build:
       context: ./docker/fastapi
       dockerfile: Dockerfile
-    container_name: "backend"
+    container_name: "zodiac_backend"
     volumes:
       - ./docker/fastapi.dockervenv:/src/.venv
       - ./docker/fastapi:/src
     ports:
       - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
+    networks:
+      - zodiac
+      default:
+        aliases:
+          - backend
+
+networks:
+  zodiac:
+    external: true
+
+
       
