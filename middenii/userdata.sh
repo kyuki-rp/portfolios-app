@@ -17,7 +17,10 @@ git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtoo
 # Building image
 sudo su -
 
-# docker compose
+# Create network
+docker network create zodiac
+
+# docker-compose up
 cd /home/ec2-user/cloudtools/middenii
 docker-compose build
 docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom"
