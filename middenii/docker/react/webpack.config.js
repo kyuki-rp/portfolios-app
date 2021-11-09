@@ -33,7 +33,7 @@ module.exports = {
     proxy: {
       '/backend': {
         target: 'http://zodiac_backend:8000',
-        pathRewrite: {'^/backend' : ''} // rewrite
+        pathRewrite: {'^/backend' : ''}
       }
     }
 	}
