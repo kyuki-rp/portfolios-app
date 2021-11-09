@@ -23,7 +23,7 @@ class ViewAll extends React.Component<Props, State> {
 
   handleClick = () => {
     axios
-     .get("http://works.middenii.com/frontend/backend/view_all")
+     .get("http://works.middenii.com:8000/view_all")
       .then(res => {
           this.setState({status:res.data.status, res:res.data.main});
         })
