@@ -6,7 +6,7 @@ module.exports = {
   output: {
     filename: "index.js",
     path: path.resolve("dist"),
-    publicPath: "/",
+    publicPath: "/frontend",
   },
   module: {
     rules: [
@@ -23,16 +23,14 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
-  publicPath: '/frontend',
 	devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    historyApiFallback: true,
-    allowedHosts: 'all',
-    port: 3000,
     historyApiFallback: {
       index: '/frontend/'
-    }
+    },
+    allowedHosts: 'all',
+    port: 3000
 	}
 };
