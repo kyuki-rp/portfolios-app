@@ -23,6 +23,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
+  publicPath: '/frontend',
 	devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
@@ -30,11 +31,8 @@ module.exports = {
     historyApiFallback: true,
     allowedHosts: 'all',
     port: 3000,
-    proxy: {
-      '/backend': {
-          target: 'http://zodiac_backend:8000', // local api server
-          pathRewrite: {'^/backend' : ''} // rewrite
-      }
-  }
+    historyApiFallback: {
+      index: '/frontend/'
+    }
 	}
 };
