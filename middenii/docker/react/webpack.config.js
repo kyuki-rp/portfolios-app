@@ -31,8 +31,9 @@ module.exports = {
     allowedHosts: 'all',
     port: 3000,      
     proxy: {
-      '/view_all': {
-        target: 'http://zodiac_backend:8000'
+      '/backend': {
+        target: 'http://zodiac_backend:8000',
+        pathRewrite: {'^/backend' : ''} // rewrite
       }
     }
 	}
