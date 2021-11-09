@@ -6,7 +6,7 @@ module.exports = {
   output: {
     filename: "index.js",
     path: path.resolve("dist"),
-    publicPath: "/frontend",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -27,9 +27,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    historyApiFallback: {
-      index: '/frontend/'
-    },
+    historyApiFallback: true,
     allowedHosts: 'all',
     port: 3000
 	}
