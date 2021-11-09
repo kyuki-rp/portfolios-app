@@ -29,6 +29,11 @@ module.exports = {
     },
     historyApiFallback: true,
     allowedHosts: 'all',
-    port: 3000
+    port: 3000,      
+    proxy: {
+      '/view_all': {
+        target: 'http://zodiac_backend:8000'
+      }
+    }
 	}
 };
