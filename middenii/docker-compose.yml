@@ -58,7 +58,7 @@ services:
     volumes:
       - ./docker/fastapi.dockervenv:/src/.venv
       - ./docker/fastapi:/src
-    ports:
+    expose:
       - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
     # networks:
     #   zodiac:
