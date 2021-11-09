@@ -46,8 +46,8 @@ services:
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-    networks:
-      - zodiac
+    # networks:
+    #   - zodiac
 
   zodiac_backend:
     build:
@@ -59,14 +59,14 @@ services:
       - ./docker/fastapi:/src
     ports:
       - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
-    networks:
-      zodiac:
-        aliases:
-          - backend
+    # networks:
+    #   zodiac:
+    #     aliases:
+    #       - backend
 
-networks:
-  zodiac:
-    external: true
+# networks:
+#   zodiac:
+#     external: true
 
 
       
