@@ -23,5 +23,5 @@ docker network create zodiac
 # docker-compose up
 cd /home/ec2-user/cloudtools/middenii
 docker-compose build
-docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom"
+docker-compose run zodiac_frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom"
 docker-compose up -d

@@ -61,8 +61,7 @@ services:
     ports:
       - 8000:8000  # ホストマシンのポート8000を、docker内のポート8000に接続する
     networks:
-      - zodiac
-      default:
+      zodiac:
         aliases:
           - backend
 
