@@ -27,7 +27,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - "./letsencrypt:/letsencrypt"
 
-
   zodiac_frontend:
     build:
       context: ./docker/react
@@ -39,7 +38,7 @@ services:
     working_dir: /var/www/app
     command: sh -c "npx webpack serve && /bin/sh"
     ports:
-      - 80:3000
+      - 3000:3000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/frontend`)"
