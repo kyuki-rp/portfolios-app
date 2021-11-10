@@ -11,6 +11,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 # gitインストール
 sudo yum install git-all -y
 
+# jqインストール
+sudo yum -y install jq
+
 # git clone
 git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtools
 
@@ -23,7 +26,8 @@ docker network create web
 # docker-compose up
 docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compose.yml up --build -d
 
+jq_add='.homepage|="/path"'
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 docker-compose build
-docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom"
+docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom && cat /home/ec2-user/cloudtools/middenii/docker/zodiac | jq $jq_add"
 docker-compose up -d
