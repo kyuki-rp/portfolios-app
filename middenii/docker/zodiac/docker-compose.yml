@@ -1,0 +1,46 @@
+version: '3'
+services:
+  zodiac_frontend:
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    container_name: "zodiac_frontend"
+    tty: true
+    volumes:
+      - ./react:/var/www/app
+    working_dir: /var/www/app
+    command: sh -c "npx webpack serve && /bin/sh"
+    ports:
+      - 3000:3000
+    labels:
+      - "traefik.enable=true"
+      # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/frontend`)"
+      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
+      - "traefik.http.routers.frontend.tls=true" #sets the service to use 
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+    # networks:
+    #   - zodiac
+
+  zodiac_backend:
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+    container_name: "zodiac_backend"
+    volumes:
+      - ./fastapi/.dockervenv:/src/.venv
+      - ./fastapi:/src
+    expose:
+      - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
+    # networks:
+    #   zodiac:
+    #     aliases:
+    #       - backend
+
+# networks:
+#   zodiac:
+#     external: true
+
+
+      

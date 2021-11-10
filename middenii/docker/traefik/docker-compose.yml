@@ -56,7 +56,7 @@ services:
       dockerfile: Dockerfile
     container_name: "zodiac_backend"
     volumes:
-      - ../zodiac/fastapi.dockervenv:/src/.venv
+      - ../zodiac/fastapi/.dockervenv:/src/.venv
       - ../zodiac/fastapi:/src
     expose:
       - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
