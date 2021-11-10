@@ -18,12 +18,10 @@ git clone https://github.com/kyuki-rp/portfolios-app.git /home/ec2-user/cloudtoo
 sudo su -
 
 # Create network
-docker network create zodiac
+docker network create web
 
 # docker-compose up
-cd /home/ec2-user/cloudtools/middenii/docker/traefik
-docker-compose build
-docker-compose up -d
+docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compose.yml up --build -d
 
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 docker-compose build
