@@ -34,7 +34,7 @@ services:
     container_name: "zodiac_frontend"
     tty: true
     volumes:
-      - ./docker/react:/var/www/app
+      - ./docker/zodiac/react:/var/www/app
     working_dir: /var/www/app
     command: sh -c "npx webpack serve && /bin/sh"
     ports:
@@ -56,8 +56,8 @@ services:
       dockerfile: Dockerfile
     container_name: "zodiac_backend"
     volumes:
-      - ./docker/fastapi.dockervenv:/src/.venv
-      - ./docker/fastapi:/src
+      - ./docker/zodiac/fastapi.dockervenv:/src/.venv
+      - ./docker/zodiac/fastapi:/src
     expose:
       - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
     # networks:
