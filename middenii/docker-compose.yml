@@ -29,7 +29,7 @@ services:
 
   zodiac_frontend:
     build:
-      context: ./docker/react
+      context: ./docker/zodiac/react
       dockerfile: Dockerfile
     container_name: "zodiac_frontend"
     tty: true
@@ -52,7 +52,7 @@ services:
 
   zodiac_backend:
     build:
-      context: ./docker/fastapi
+      context: ./docker/zodiac/fastapi
       dockerfile: Dockerfile
     container_name: "zodiac_backend"
     volumes:
