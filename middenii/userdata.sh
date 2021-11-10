@@ -34,6 +34,6 @@ docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack
 # package.jsonの追記
 jq_add='.homepage|="/path"'
 chmod 777 /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
-cat /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json | jq $jq_add > /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
+cat /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json | jq $jq_add /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
 
 docker-compose up -d
