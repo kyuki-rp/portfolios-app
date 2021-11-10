@@ -32,7 +32,7 @@ docker-compose build
 docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom"
 
 # package.jsonの追記
-jq_add='.homepage|="/path"'
+jq_add='.homepage|="/frontend"'
 chmod 777 /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
 cat /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json | jq $jq_add > tmp && mv tmp /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
 
