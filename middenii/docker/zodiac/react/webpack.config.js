@@ -31,6 +31,10 @@ module.exports = {
     allowedHosts: 'all',
     port: 3000,      
     proxy: {
+      '/frontend': {
+        target: 'http://frontend:3000',
+        pathRewrite: {'^/frontend' : ''}
+      },
       '/backend': {
         target: 'http://backend:8000',
         pathRewrite: {'^/backend' : ''}
