@@ -45,7 +45,7 @@ services:
 networks:
   web:
     external:
-      name: traefik_web
+      name: web
 
 
       
