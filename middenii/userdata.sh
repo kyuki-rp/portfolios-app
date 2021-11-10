@@ -29,7 +29,7 @@ docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compo
 # zodiac app docker-compose up
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 docker-compose build
-docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom && cat /home/ec2-user/cloudtools/middenii/docker/zodiac | jq $jq_add"
+docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom"
 
 # package.jsonの追記
 jq_add='.homepage|="/path"'
