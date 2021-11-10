@@ -32,7 +32,7 @@ module.exports = {
     port: 3000,      
     proxy: {
       '/backend': {
-        target: 'http://zodiac_backend:8000',
+        target: 'http://backend:8000',
         pathRewrite: {'^/backend' : ''}
       }
     }

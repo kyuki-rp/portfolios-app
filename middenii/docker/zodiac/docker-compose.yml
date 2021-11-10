@@ -1,10 +1,9 @@
 version: '3'
 services:
-  zodiac_frontend:
+  frontend:
     build:
       context: ./react
       dockerfile: Dockerfile
-    container_name: "zodiac_frontend"
     tty: true
     volumes:
       - ./react:/var/www/app
@@ -24,11 +23,10 @@ services:
       - default
       - web
 
-  zodiac_backend:
+  backend:
     build:
       context: ./fastapi
       dockerfile: Dockerfile
-    container_name: "zodiac_backend"
     volumes:
       - ./fastapi/.dockervenv:/src/.venv
       - ./fastapi:/src
