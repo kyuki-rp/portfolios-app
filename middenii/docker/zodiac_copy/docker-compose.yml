@@ -9,8 +9,8 @@ services:
       - ./react:/var/www/app
     working_dir: /var/www/app
     command: sh -c "npx webpack serve && /bin/sh"
-    ports:
-      - 3000:3000
+    expose:
+      - "3000"
     labels:
       - "traefik.enable=true"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/frontend`)"
