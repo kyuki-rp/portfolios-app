@@ -29,12 +29,12 @@ services:
 
   zodiac_frontend:
     build:
-      context: ./docker/zodiac/react
+      context: ../zodiac/react
       dockerfile: Dockerfile
     container_name: "zodiac_frontend"
     tty: true
     volumes:
-      - ./docker/zodiac/react:/var/www/app
+      - ../zodiac/react:/var/www/app
     working_dir: /var/www/app
     command: sh -c "npx webpack serve && /bin/sh"
     ports:
@@ -52,12 +52,12 @@ services:
 
   zodiac_backend:
     build:
-      context: ./docker/zodiac/fastapi
+      context: ../zodiac/fastapi
       dockerfile: Dockerfile
     container_name: "zodiac_backend"
     volumes:
-      - ./docker/zodiac/fastapi.dockervenv:/src/.venv
-      - ./docker/zodiac/fastapi:/src
+      - ../zodiac/fastapi.dockervenv:/src/.venv
+      - ../zodiac/fastapi:/src
     expose:
       - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
     # networks:
