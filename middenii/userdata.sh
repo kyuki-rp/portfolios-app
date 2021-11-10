@@ -23,11 +23,17 @@ sudo su -
 # Create network
 docker network create web
 
-# docker-compose up
+# traefik docker-compose up
 docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compose.yml up --build -d
 
-jq_add='.homepage|="/path"'
+# zodiac app docker-compose up
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 docker-compose build
 docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap && npm install react react-dom && cat /home/ec2-user/cloudtools/middenii/docker/zodiac | jq $jq_add"
+
+# package.jsonの追記
+jq_add='.homepage|="/path"'
+chmod 777 /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
+cat /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json | jq $jq_add > /home/ec2-user/cloudtools/middenii/docker/zodiac/react/package.json
+
 docker-compose up -d
