@@ -31,8 +31,3 @@ cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 docker-compose build
 docker-compose run frontend sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap history@4.10.1 && npm install react react-dom"
 docker-compose up -d
-
-# Set subdirectory
-cd /home/ec2-user/cloudtools/middenii/docker/zodiac/react/dist
-mkdir frontend
-cp /home/ec2-user/cloudtools/middenii/docker/zodiac/react/dist/index.js /home/ec2-user/cloudtools/middenii/docker/zodiac/react/dist/frontend/index.js
