@@ -35,6 +35,6 @@ module.exports = {
     //     target: 'http://backend:8000',
     //     pathRewrite: {'^/backend' : ''}
     //   }
-    }
+    // }
 	}
 };
