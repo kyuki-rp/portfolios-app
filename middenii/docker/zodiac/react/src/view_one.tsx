@@ -25,7 +25,7 @@ class ViewOne extends React.Component<Props, State> {
     event.preventDefault();
 
     axios
-     .post("/backend/view_one", {"your_zodiac_sign": this.state.your_zodiac_sign})
+     .post("http://works.middenii.com:8000/view_one", {"your_zodiac_sign": this.state.your_zodiac_sign}) //  .post("/backend/view_one", {"your_zodiac_sign": this.state.your_zodiac_sign})
       .then(res => {
           this.setState({status:res.data.status, description:res.data.description, star:res.data.star});
         })
