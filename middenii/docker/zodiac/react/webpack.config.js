@@ -27,9 +27,10 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
+    publicPath: '/frontend',
     historyApiFallback: true,
     allowedHosts: 'all',
-    port: 3000,      
+    port: 3000, 
     proxy: {
       '/backend': {
         target: 'http://backend:8000',
