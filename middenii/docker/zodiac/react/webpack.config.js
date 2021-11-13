@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "index.js",
-    path: path.resolve("dist"),
+    path: path.resolve("dist", "frontend"),
     publicPath: "/frontend"
   },
   module: {
