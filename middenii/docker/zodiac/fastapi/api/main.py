@@ -5,10 +5,11 @@ import pandas as pd
 import datetime
 from starlette.middleware.cors import CORSMiddleware
 
+origins = ["http://works.middenii.com:3000/","https://works.middenii.com"],
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
