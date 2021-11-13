@@ -26,8 +26,8 @@ module.exports = {
 	devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
+      contentBasePublicPath: '/frontend'
     },
-    publicPath: '/frontend',
     historyApiFallback: true,
     allowedHosts: 'all',
     port: 3000, 
