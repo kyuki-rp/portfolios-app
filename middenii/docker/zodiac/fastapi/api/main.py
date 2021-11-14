@@ -21,6 +21,10 @@ class Value(BaseModel):
 async def hello():
     return {"message": "hello world!"}
 
+@app.get("/zodiac-api")
+async def hello():
+    return {"message": "hello world! api!"}
+
 @app.post("/view_one")
 async def create_user(value:Value):
     dt = datetime.datetime.now()
