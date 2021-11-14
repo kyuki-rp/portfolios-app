@@ -35,14 +35,14 @@ services:
     networks:
       - default
       - web
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
-      # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.backend.tls=true" #sets the service to use 
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
+    #   # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
+    #   - "traefik.http.routers.backend.tls=true" #sets the service to use 
+    #   - "traefik.http.routers.backend.entrypoints=websecure"
+    #   - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
+    #   - "traefik.http.routers.backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
 
 networks:
   web:
