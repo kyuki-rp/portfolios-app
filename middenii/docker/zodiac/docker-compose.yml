@@ -13,7 +13,7 @@ services:
       - 3000:3000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/frontend`)"
+      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.frontend.tls=true" #sets the service to use 
       - "traefik.http.routers.frontend.entrypoints=websecure"
@@ -37,12 +37,12 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
-      # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.frontend.tls=true" #sets the service to use 
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
+      # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
+      - "traefik.http.routers.backend.tls=true" #sets the service to use 
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
 
 networks:
   web:
