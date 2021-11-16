@@ -21,10 +21,7 @@ class Value(BaseModel):
 async def hello():
     return {"message": "hello world!"}
 
-subdirectry = '/zodiac-api'
-subdirectry = ''
-
-@app.post(f"{subdirectry}/view_one")
+@app.post(f"/view_one")
 async def create_user(value:Value):
     dt = datetime.datetime.now()
     random.seed(int(f"{dt.year}{dt.month}{dt.day}"))
@@ -46,7 +43,7 @@ async def create_user(value:Value):
     return {"status": "200", "description":description, "star":star}
 
 # シンプルなJSON Bodyの受け取り
-@app.get(f"{subdirectry}/view_all")
+@app.get(f"/view_all")
 def create_user():
     dt = datetime.datetime.now()
     random.seed(int(f"{dt.year}{dt.month}{dt.day}"))
