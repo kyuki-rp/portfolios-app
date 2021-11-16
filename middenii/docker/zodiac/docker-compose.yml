@@ -16,13 +16,13 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-web`)"
+      - "traefik.http.routers.zodiac-frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.frontend.tls=true" #sets the service to use 
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.frontend.middlewares=zodiac-frontend-stripprefix"
+      - "traefik.http.routers.zodiac-frontend.tls=true" #sets the service to use 
+      - "traefik.http.routers.zodiac-frontend.entrypoints=websecure"
+      - "traefik.http.routers.zodiac-frontend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.zodiac-frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.zodiac-frontend.middlewares=zodiac-frontend-stripprefix"
       - "traefik.http.middlewares.zodiac-frontend-stripprefix.stripprefix.prefixes=/zodiac-web"
       - "traefik.http.middlewares.zodiac-frontend-stripprefix.stripprefix.forceslash=true"
 
@@ -41,13 +41,13 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
+      - "traefik.http.routers.zodiac-backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.backend.tls=true" #sets the service to use 
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.backend.middlewares=zodiac-backend-stripprefix"
+      - "traefik.http.routers.zodiac-backend.tls=true" #sets the service to use 
+      - "traefik.http.routers.zodiac-backend.entrypoints=websecure"
+      - "traefik.http.routers.zodiac-backend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.zodiac-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.zodiac-backend.middlewares=zodiac-backend-stripprefix"
       - "traefik.http.middlewares.zodiac-backend-stripprefix.stripprefix.prefixes=/zodiac-api"
       - "traefik.http.middlewares.zodiac-backend-stripprefix.stripprefix.forceslash=true"
 
