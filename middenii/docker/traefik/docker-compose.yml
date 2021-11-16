@@ -18,9 +18,7 @@ services:
       - "--certificatesresolvers.myhttpchallenge.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.myhttpchallenge.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory" # staging
       - "--certificatesresolvers.myhttpchallenge.acme.email=info@middenii.com"
-      - "--certificatesresolvers.myhttpchallenge.acme.storage=/letsencrypt/acme.json"    
-      - "--entrypoints.api.address=:8000"
-
+      - "--certificatesresolvers.myhttpchallenge.acme.storage=/letsencrypt/acme.json"      
     ports:
       - "80:80"
       - "443:443"
