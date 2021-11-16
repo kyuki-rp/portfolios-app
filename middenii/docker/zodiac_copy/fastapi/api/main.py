@@ -24,7 +24,7 @@ async def hello():
 @app.post(f"/view_one")
 async def create_user(value:Value):
     dt = datetime.datetime.now()
-    random.seed(int(f"{dt.year}{dt.month}{dt.day}"))
+    random.seed(int(f"{dt.year}{dt.month}{dt.day}")+123)
 
     # レスポンスbody   
     scores = random.rand(12) *100
@@ -46,7 +46,7 @@ async def create_user(value:Value):
 @app.get(f"/view_all")
 def create_user():
     dt = datetime.datetime.now()
-    random.seed(int(f"{dt.year}{dt.month}{dt.day}"))
+    random.seed(int(f"{dt.year}{dt.month}{dt.day}")+123)
 
     # レスポンスbody   
     scores = random.rand(12) *100
