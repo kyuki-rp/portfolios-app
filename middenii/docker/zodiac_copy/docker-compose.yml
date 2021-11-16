@@ -1,6 +1,6 @@
 version: '3'
 services:
-  frontend:
+  zodiac_copy-frontend:
     build:
       context: ./react
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
       - "traefik.http.middlewares.zodiac_copy-frontend-stripprefix.stripprefix.forceslash=true"
 
 
-  backend:
+  zodiac_copy-backend:
     build:
       context: ./fastapi
       dockerfile: Dockerfile

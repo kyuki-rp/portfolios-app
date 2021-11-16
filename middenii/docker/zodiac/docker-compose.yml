@@ -1,6 +1,6 @@
 version: '3'
 services:
-  frontend:
+  zodiac-frontend:
     build:
       context: ./react
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
       - "traefik.http.middlewares.zodiac-frontend-stripprefix.stripprefix.forceslash=true"
 
 
-  backend:
+  zodiac-backend:
     build:
       context: ./fastapi
       dockerfile: Dockerfile
