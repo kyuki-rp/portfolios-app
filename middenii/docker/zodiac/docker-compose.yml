@@ -47,7 +47,7 @@ services:
       - "traefik.http.routers.zodiac-backend.entrypoints=websecure"
       - "traefik.http.routers.zodiac-backend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.zodiac-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.zodiac-backend.middlewares=zodiac-backend-backend-stripprefix"
+      - "traefik.http.routers.zodiac-backend.middlewares=zodiac-backend-stripprefix"
       - "traefik.http.middlewares.zodiac-backend-stripprefix.stripprefix.prefixes=/zodiac-api"
       - "traefik.http.middlewares.zodiac-backend-stripprefix.stripprefix.forceslash=true"
 
