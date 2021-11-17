@@ -19,7 +19,7 @@ services:
       - "traefik.http.routers.zodiaccopy-frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.zodiaccopy-frontend.tls=true" #sets the service to use 
-      - "traefik.http.routers.zodiaccopy-frontend.service=zodiaccopy-frontend"
+      - "traefik.http.routers.zodiaccopy-frontend.service=zodiaccopy-frontend@internal"
       - "traefik.http.routers.zodiaccopy-frontend.entrypoints=websecure"
       - "traefik.http.routers.zodiaccopy-frontend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.zodiaccopy-frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
@@ -46,7 +46,7 @@ services:
       - "traefik.http.routers.zodiaccopy-backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.zodiaccopy-backend.tls=true" #sets the service to use 
-      - "traefik.http.routers.zodiaccopy-backend.service=zodiaccopy-backend"
+      - "traefik.http.routers.zodiaccopy-backend.service=zodiaccopy-backend@internal"
       - "traefik.http.routers.zodiaccopy-backend.entrypoints=websecure"
       - "traefik.http.routers.zodiaccopy-backend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.zodiaccopy-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain

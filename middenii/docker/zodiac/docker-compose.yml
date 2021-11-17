@@ -19,7 +19,7 @@ services:
       - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.frontend.tls=true" #sets the service to use 
-      - "traefik.http.routers.frontend.service=frontend"
+      - "traefik.http.routers.frontend.service=frontend@internal"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
@@ -45,7 +45,7 @@ services:
       - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.backend.tls=true" #sets the service to use 
-      - "traefik.http.routers.backend.service=backend"
+      - "traefik.http.routers.backend.service=backend@internal"
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
