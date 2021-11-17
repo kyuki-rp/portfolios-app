@@ -53,7 +53,7 @@ services:
       - "traefik.http.middlewares.zodiaccopy-backend-stripprefix.stripprefix.forceslash=true"
 
 networks:
-  web:
+  web2:
     external:
       name: web2
 
