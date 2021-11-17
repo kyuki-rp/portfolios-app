@@ -13,12 +13,13 @@ services:
       - "3000"
     networks:
       - default
-      - web2
+      - web
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.zodiaccopy-frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.zodiaccopy-frontend.tls=true" #sets the service to use 
+      - "traefik.http.routers.zodiaccopy-frontend.service=zodiaccopy-frontend"
       - "traefik.http.routers.zodiaccopy-frontend.entrypoints=websecure"
       - "traefik.http.routers.zodiaccopy-frontend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.zodiaccopy-frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
@@ -38,13 +39,14 @@ services:
       - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
     networks:
       - default
-      - web2
+      - web
 
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.zodiaccopy-backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.zodiaccopy-backend.tls=true" #sets the service to use 
+      - "traefik.http.routers.zodiaccopy-backend.service=zodiaccopy-backend"
       - "traefik.http.routers.zodiaccopy-backend.entrypoints=websecure"
       - "traefik.http.routers.zodiaccopy-backend.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.zodiaccopy-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
@@ -53,9 +55,9 @@ services:
       - "traefik.http.middlewares.zodiaccopy-backend-stripprefix.stripprefix.forceslash=true"
 
 networks:
-  web2:
+  web:
     external:
-      name: web2
+      name: web
 
 
       

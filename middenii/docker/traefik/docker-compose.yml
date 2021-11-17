@@ -28,13 +28,8 @@ services:
       - "./letsencrypt:/letsencrypt"
     networks:
       - web
-      - web2
 
 networks:
   web:
     external:
       name: web
-
-  web2:
-    external:
-      name: web2
