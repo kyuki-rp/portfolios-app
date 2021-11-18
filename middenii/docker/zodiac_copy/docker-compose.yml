@@ -1,6 +1,6 @@
 version: '3'
 services:
-  ${frontend_app_name}:
+  cpfr:
     build:
       context: ./react
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
       - "traefik.http.middlewares.${frontend_app_name}-stripprefix.stripprefix.forceslash=true"
 
 
-  ${backend_app_name}:
+  cpba:
     build:
       context: ./fastapi
       dockerfile: Dockerfile
