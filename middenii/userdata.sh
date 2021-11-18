@@ -22,7 +22,6 @@ sudo su -
 
 # Create network
 docker network create web
-docker network create web2
 
 # traefik docker-compose up
 docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compose.yml up --build -d
