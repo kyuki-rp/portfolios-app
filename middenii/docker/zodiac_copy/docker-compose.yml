@@ -16,16 +16,15 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${frontend_app_name}.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-web`)"
+      - "traefik.http.routers.${app_name}fr.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.${frontend_app_name}.tls=true" #sets the service to use 
-      - "traefik.http.routers.${frontend_app_name}.entrypoints=websecure"
-      - "traefik.http.routers.${frontend_app_name}.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.${frontend_app_name}.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.${frontend_app_name}.middlewares=${frontend_app_name}-stripprefix"
-      - "traefik.http.middlewares.${frontend_app_name}-stripprefix.stripprefix.prefixes=/zodiac-copy-web"
-      - "traefik.http.middlewares.${frontend_app_name}-stripprefix.stripprefix.forceslash=true"
-
+      - "traefik.http.routers.${app_name}fr.tls=true" #sets the service to use 
+      - "traefik.http.routers.${app_name}fr.entrypoints=websecure"
+      - "traefik.http.routers.${app_name}fr.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.${app_name}fr.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.${app_name}fr.middlewares=${app_name}fr-stripprefix"
+      - "traefik.http.middlewares.${app_name}fr-stripprefix.stripprefix.prefixes=/zodiac-copy-web"
+      - "traefik.http.middlewares.${app_name}fr-stripprefix.stripprefix.forceslash=true"
 
   cpba:
     build:
@@ -41,15 +40,15 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${backend_app_name}.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-api`)"
+      - "traefik.http.routers.${app_name}ba.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.${backend_app_name}.tls=true" #sets the service to use 
-      - "traefik.http.routers.${backend_app_name}.entrypoints=websecure"
-      - "traefik.http.routers.${backend_app_name}.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.${backend_app_name}.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.${backend_app_name}.middlewares=${backend_app_name}-stripprefix"
-      - "traefik.http.middlewares.${backend_app_name}-stripprefix.stripprefix.prefixes=/zodiac-copy-api"
-      - "traefik.http.middlewares.${backend_app_name}-stripprefix.stripprefix.forceslash=true"
+      - "traefik.http.routers.${app_name}ba.tls=true" #sets the service to use 
+      - "traefik.http.routers.${app_name}ba.entrypoints=websecure"
+      - "traefik.http.routers.${app_name}ba.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.${app_name}ba.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.${app_name}ba.middlewares=${app_name}ba-stripprefix"
+      - "traefik.http.middlewares.${app_name}ba-stripprefix.stripprefix.prefixes=/zodiac-copy-api"
+      - "traefik.http.middlewares.${app_name}ba-stripprefix.stripprefix.forceslash=true"
 
 networks:
   web:
