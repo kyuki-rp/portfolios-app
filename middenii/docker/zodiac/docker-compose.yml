@@ -4,6 +4,7 @@ services:
     build:
       context: ./react
       dockerfile: Dockerfile
+    container_name: "${app_name}-frontend"
     tty: true
     volumes:
       - ./react:/var/www/app
@@ -16,21 +17,22 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-web`)"
+      - "traefik.http.routers.${app_name}-frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.frontend.tls=true" #sets the service to use 
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.frontend.middlewares=frontend-stripprefix"
-      - "traefik.http.middlewares.frontend-stripprefix.stripprefix.prefixes=/zodiac-web"
-      - "traefik.http.middlewares.frontend-stripprefix.stripprefix.forceslash=true"
+      - "traefik.http.routers.${app_name}-frontend.tls=true" #sets the service to use 
+      - "traefik.http.routers.${app_name}-frontend.entrypoints=websecure"
+      - "traefik.http.routers.${app_name}-frontend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.${app_name}-frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.${app_name}-frontend.middlewares=${app_name}-frontend-stripprefix"
+      - "traefik.http.middlewares.${app_name}-frontend-stripprefix.stripprefix.prefixes=/zodiac-web"
+      - "traefik.http.middlewares.${app_name}-frontend-stripprefix.stripprefix.forceslash=true"
 
 
   backend:
     build:
       context: ./fastapi
       dockerfile: Dockerfile
+    container_name: "${app_name}-backend"
     volumes:
       - ./fastapi/.dockervenv:/src/.venv
       - ./fastapi:/src
@@ -41,15 +43,15 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
+      - "traefik.http.routers.${app_name}-backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
-      - "traefik.http.routers.backend.tls=true" #sets the service to use 
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
-      - "traefik.http.routers.backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
-      - "traefik.http.routers.backend.middlewares=backend-stripprefix"
-      - "traefik.http.middlewares.backend-stripprefix.stripprefix.prefixes=/zodiac-api"
-      - "traefik.http.middlewares.backend-stripprefix.stripprefix.forceslash=true"
+      - "traefik.http.routers.${app_name}-backend.tls=true" #sets the service to use 
+      - "traefik.http.routers.${app_name}-backend.entrypoints=websecure"
+      - "traefik.http.routers.${app_name}-backend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.${app_name}-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.${app_name}-backend.middlewares=${app_name}-backend-stripprefix"
+      - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.prefixes=/zodiac-api"
+      - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.forceslash=true"
 
 networks:
   web:
