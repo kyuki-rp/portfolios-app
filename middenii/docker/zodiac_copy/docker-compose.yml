@@ -4,6 +4,7 @@ services:
     build:
       context: ./react
       dockerfile: Dockerfile
+    container_name: "${app_name}fr"
     tty: true
     volumes:
       - ./react:/var/www/app
@@ -19,7 +20,7 @@ services:
       - "traefik.http.routers.${app_name}fr.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-web`)"
       # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.${app_name}fr.tls=true" #sets the service to use 
-      - "traefik.http.routers.${app_name}.service=frontend-zodiac-copy"
+      # - "traefik.http.routers.${app_name}fr.service=frontend-zodiac-copy"
       - "traefik.http.routers.${app_name}fr.entrypoints=websecure"
       - "traefik.http.routers.${app_name}fr.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.${app_name}fr.tls.domains[0].main=works.middenii.com" #optionally restrict domain
@@ -31,6 +32,7 @@ services:
     build:
       context: ./fastapi
       dockerfile: Dockerfile
+    container_name: "${app_name}ba"
     volumes:
       - ./fastapi/.dockervenv:/src/.venv
       - ./fastapi:/src
@@ -44,7 +46,7 @@ services:
       - "traefik.http.routers.${app_name}ba.rule=Host(`works.middenii.com`)  && PathPrefix(`/zodiac-copy-api`)"
       # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
       - "traefik.http.routers.${app_name}ba.tls=true" #sets the service to use 
-      - "traefik.http.routers.${app_name}.service=backend-zodiac-copy"
+      # - "traefik.http.routers.${app_name}ba.service=backend-zodiac-copy"
       - "traefik.http.routers.${app_name}ba.entrypoints=websecure"
       - "traefik.http.routers.${app_name}ba.tls.certresolver=myhttpchallenge"
       - "traefik.http.routers.${app_name}ba.tls.domains[0].main=works.middenii.com" #optionally restrict domain
