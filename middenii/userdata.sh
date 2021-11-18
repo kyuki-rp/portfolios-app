@@ -35,8 +35,8 @@ docker-compose up -d
 
 # zodiac_copy app docker-compose up
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac_copy
-export app_name="cp"
+export app_name="zodiac2"
 docker-compose build
-docker-compose run cpfr sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap history@4.10.1 && npm install react react-dom"
+docker-compose run zodiac2fr sh -c "npm init -y && npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader @types/react @types/react-dom react-router-dom @types/react-router-dom axios bootstrap css-loader style-loader react-bootstrap history@4.10.1 && npm install react react-dom"
 docker-compose up -d
 
