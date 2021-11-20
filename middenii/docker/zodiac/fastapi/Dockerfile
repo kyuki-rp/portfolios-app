@@ -10,4 +10,4 @@ RUN pip install uvicorn
 RUN pip install pandas
 
 # FastAPIを8000ポートで待機
-ENTRYPOINT ["uvicorn", "api.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+CMD sh -c "uvicorn api.main:app --reload --host 0.0.0.0 --port 8000"
