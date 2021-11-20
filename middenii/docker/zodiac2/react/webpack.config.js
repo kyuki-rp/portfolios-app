@@ -7,7 +7,7 @@ module.exports = {
     filename: "index.js",
     path: path.resolve("dist"),
     // publicPath: "/frontend"
-    publicPath: "/"
+    publicPath: "/zodiac2-web"
   },
   module: {
     rules: [
