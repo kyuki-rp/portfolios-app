@@ -37,4 +37,4 @@ docker network create web
 # export app_name="zodiac2"
 # docker-compose --compatibility up --build -d
 
-for dir_path in /home/ec2-user/cloudtools/middenii/docker/*; do cd $dir_path && export app_name=`echo $dir_path | sed "s/.*/\(.*\)/\1/"` && docker-compose --compatibility up --build -d; done
+for dir_path in /home/ec2-user/cloudtools/middenii/docker/*; do cd $dir_path && export app_name=`echo $dir_path | sed -e "s:.*\/\(.*\):\1:"` && docker-compose --compatibility up --build -d; done
