@@ -39,7 +39,7 @@ docker network create web
 
 for file in /home/ec2-user/cloudtools/middenii/docker/*
 do
-  echo "${file##*/}"
+  echo "${file}"
 #   cd "/home/ec2-user/cloudtools/middenii/docker/${file##*/}"
 #   export app_name="${file##*/}"
 #   docker-compose --compatibility up --build -d
