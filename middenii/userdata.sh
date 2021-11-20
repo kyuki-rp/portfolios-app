@@ -38,7 +38,7 @@ docker network create web
 # docker-compose --compatibility up --build -d
 
 for dir_path in /home/ec2-user/cloudtools/middenii/docker/*; do
-  echo "$file"
+  echo $file
 #   cd "/home/ec2-user/cloudtools/middenii/docker/${file##*/}"
 #   export app_name="$\{file##*/\}"
 #   docker-compose --compatibility up --build -d
