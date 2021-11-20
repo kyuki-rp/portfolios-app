@@ -24,7 +24,8 @@ sudo su -
 docker network create web
 
 # traefik docker-compose up
-docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compose.yml up --build -d
+cd /home/ec2-user/cloudtools/middenii/docker/traefik
+docker-compose --compatibility up --build -d
 
 # zodiac app docker-compose up
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac
