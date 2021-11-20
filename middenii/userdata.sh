@@ -23,16 +23,22 @@ sudo su -
 # Create network
 docker network create web
 
-# traefik docker-compose up
-cd /home/ec2-user/cloudtools/middenii/docker/traefik
-docker-compose --compatibility up --build -d
+# # traefik docker-compose up
+# cd /home/ec2-user/cloudtools/middenii/docker/traefik
+# docker-compose --compatibility up --build -d
 
-# zodiac app docker-compose up
-cd /home/ec2-user/cloudtools/middenii/docker/zodiac
-export app_name="zodiac1"
-docker-compose --compatibility up --build -d
+# # zodiac app docker-compose up
+# cd /home/ec2-user/cloudtools/middenii/docker/zodiac
+# export app_name="zodiac1"
+# docker-compose --compatibility up --build -d
 
-# zodiac app docker-compose up
-cd /home/ec2-user/cloudtools/middenii/docker/zodiac2
-export app_name="zodiac2"
-docker-compose --compatibility up --build -d
+# # zodiac app docker-compose up
+# cd /home/ec2-user/cloudtools/middenii/docker/zodiac2
+# export app_name="zodiac2"
+# docker-compose --compatibility up --build -d
+
+for file in 'traefik' 'zodiac' 'zodiac2'; do
+  cd /home/ec2-user/cloudtools/middenii/docker/${file}
+  export app_name="${file}"
+  docker-compose --compatibility up --build -d
+done
