@@ -24,4 +24,8 @@ sudo su -
 docker network create web
 
 # docker-compose up
-for dir_path in /home/ec2-user/cloudtools/middenii/docker/*; do cd $dir_path && export app_name=`echo $dir_path | sed -e "s:.*\/\(.*\):\1:"` && docker-compose --compatibility up --build -d; done
+for dir_path in /home/ec2-user/cloudtools/middenii/docker/*; do \
+  cd $dir_path && \
+  export app_name=`echo $dir_path | sed -e "s:.*\/\(.*\):\1:"` && \
+  docker-compose --compatibility up --build -d; \
+  done
