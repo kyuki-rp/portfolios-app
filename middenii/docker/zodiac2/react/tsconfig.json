@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "ES6",
+        "module": "ES2020",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "lib": [
+            "ES2020",
+            "DOM"
+        ]
+    }
+}
