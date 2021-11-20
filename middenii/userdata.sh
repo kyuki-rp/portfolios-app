@@ -23,18 +23,5 @@ sudo su -
 # Create network
 docker network create web
 
-# # traefik docker-compose up
-# cd /home/ec2-user/cloudtools/middenii/docker/traefik
-# docker-compose --compatibility up --build -d
-
-# # zodiac app docker-compose up
-# cd /home/ec2-user/cloudtools/middenii/docker/zodiac
-# export app_name="zodiac1"
-# docker-compose --compatibility up --build -d
-
-# # zodiac app docker-compose up
-# cd /home/ec2-user/cloudtools/middenii/docker/zodiac2
-# export app_name="zodiac2"
-# docker-compose --compatibility up --build -d
-
+# docker-compose up
 for dir_path in /home/ec2-user/cloudtools/middenii/docker/*; do cd $dir_path && export app_name=`echo $dir_path | sed -e "s:.*\/\(.*\):\1:"` && docker-compose --compatibility up --build -d; done
