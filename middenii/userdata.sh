@@ -31,8 +31,4 @@ cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 export app_name="zodiac1"
 docker-compose up --build -d
 
-# zodiac_copy app docker-compose up
-cd /home/ec2-user/cloudtools/middenii/docker/zodiac_copy
-export app_name="zodiac2"
-docker-compose up --build -d
 
