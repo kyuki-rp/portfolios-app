@@ -1,0 +1,62 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    container_name: "${app_name}-frontend"
+    tty: true
+    volumes:
+      - ./react:/var/www/app
+      - /var/www/app/node_modules
+      - /var/www/app/dist
+    expose:
+      - "3000"
+    networks:
+      - default
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${app_name}-frontend.rule=Host(`works.middenii.com`)  && PathPrefix(`/${app_name}-web`)"
+      # - "traefik.http.routers.frontend.rule=Host(`works.middenii.com`)"
+      - "traefik.http.routers.${app_name}-frontend.tls=true" #sets the service to use 
+      - "traefik.http.routers.${app_name}-frontend.entrypoints=websecure"
+      - "traefik.http.routers.${app_name}-frontend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.${app_name}-frontend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.${app_name}-frontend.middlewares=${app_name}-frontend-stripprefix"
+      - "traefik.http.middlewares.${app_name}-frontend-stripprefix.stripprefix.prefixes=/${app_name}-web"
+      - "traefik.http.middlewares.${app_name}-frontend-stripprefix.stripprefix.forceslash=true"
+
+
+  backend:
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+    container_name: "${app_name}-backend"
+    volumes:
+      - ./fastapi/.dockervenv:/src/.venv
+      - ./fastapi:/src
+    expose:
+      - "8000"  # ホストマシンのポート8000を、docker内のポート8000に接続する
+    networks:
+      - default
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${app_name}-backend.rule=Host(`works.middenii.com`)  && PathPrefix(`/${app_name}-api`)"
+      # - "traefik.http.routers.backend.rule=Host(`works.middenii.com`)"
+      - "traefik.http.routers.${app_name}-backend.tls=true" #sets the service to use 
+      - "traefik.http.routers.${app_name}-backend.entrypoints=websecure"
+      - "traefik.http.routers.${app_name}-backend.tls.certresolver=myhttpchallenge"
+      - "traefik.http.routers.${app_name}-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
+      - "traefik.http.routers.${app_name}-backend.middlewares=${app_name}-backend-stripprefix"
+      - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.prefixes=/${app_name}-api"
+      - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.forceslash=true"
+
+networks:
+  web:
+    external:
+      name: web
+
+
+      
