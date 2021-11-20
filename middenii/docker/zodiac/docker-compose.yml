@@ -8,6 +8,8 @@ services:
     tty: true
     volumes:
       - ./react:/var/www/app
+      - /var/www/app/node_modules
+      - /var/www/app/dist
     expose:
       - "3000"
     networks:
