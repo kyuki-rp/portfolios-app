@@ -29,9 +29,9 @@ docker-compose -f /home/ec2-user/cloudtools/middenii/docker/traefik/docker-compo
 # zodiac app docker-compose up
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac
 export app_name="zodiac1"
-docker-compose up --build -d
+docker-compose --compatibility up --build -d
 
 # zodiac app docker-compose up
 cd /home/ec2-user/cloudtools/middenii/docker/zodiac2
 export app_name="zodiac2"
-docker-compose up --build -d
+docker-compose --compatibility up --build -d

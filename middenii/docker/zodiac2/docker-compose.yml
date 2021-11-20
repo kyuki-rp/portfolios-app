@@ -26,6 +26,10 @@ services:
       - "traefik.http.routers.${app_name}-frontend.middlewares=${app_name}-frontend-stripprefix"
       - "traefik.http.middlewares.${app_name}-frontend-stripprefix.stripprefix.prefixes=/${app_name}-web"
       - "traefik.http.middlewares.${app_name}-frontend-stripprefix.stripprefix.forceslash=true"
+    deploy:
+      resources:
+        limits:
+          memory: 300m
 
 
   backend:
@@ -52,6 +56,10 @@ services:
       - "traefik.http.routers.${app_name}-backend.middlewares=${app_name}-backend-stripprefix"
       - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.prefixes=/${app_name}-api"
       - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.forceslash=true"
+    deploy:
+      resources:
+        limits:
+          memory: 300m
 
 networks:
   web:
