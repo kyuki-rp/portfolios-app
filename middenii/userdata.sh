@@ -37,4 +37,4 @@ docker network create web
 # export app_name="zodiac2"
 # docker-compose --compatibility up --build -d
 
-for file in /home/ec2-user/cloudtools/middenii/docker/*; do echo "${file}"; done
+for file in /home/ec2-user/cloudtools/middenii/docker/*; do echo 1; done
