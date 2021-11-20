@@ -28,6 +28,10 @@ services:
       - "./letsencrypt:/letsencrypt"
     networks:
       - web
+    deploy:
+      resources:
+        limits:
+          memory: 300m
 
 networks:
   web:
