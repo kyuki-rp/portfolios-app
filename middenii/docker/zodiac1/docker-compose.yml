@@ -55,7 +55,11 @@ services:
       - "traefik.http.routers.${app_name}-backend.tls.domains[0].main=works.middenii.com" #optionally restrict domain
       - "traefik.http.routers.${app_name}-backend.middlewares=${app_name}-backend-stripprefix"
       - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.prefixes=/${app_name}-api"
-      - "traefik.http.middlewaz
+      - "traefik.http.middlewares.${app_name}-backend-stripprefix.stripprefix.forceslash=true"
+    deploy:
+      resources:
+        limits:
+          memory: 300m
 
 networks:
   web:
